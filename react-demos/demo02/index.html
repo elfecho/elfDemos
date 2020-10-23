@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <style>
+      body {
+        margin: 20px;
+      }
+      .box {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #CCC;
+        border-radius: 20px;
+        padding: 20px;
+        box-sizing: border-box;
+        
+        display: flex;
+      }
+      .item {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #666;
+      }
+      .box1 {
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box2 {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .box3 {
+        justify-content: space-between;
+      }
+
+      .box3 .item:nth-child(2) { 
+        align-self: center;
+      }
+
+      .box3 .item:nth-child(3) { 
+        align-self: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div class="box1 box">
+      <div class="item"></div>
+    </div>
+    <div class="box2 box">
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="box3 box">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <script type="text/babel">
+      var names = ['Alice', 'Emily', 'Kate'];
+
+      ReactDOM.render(
+        <div>
+        {
+          names.map(function (name, index) {
+            return <div key={index}>Hello, {name}!</div>
+          })
+        }
+        </div>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
