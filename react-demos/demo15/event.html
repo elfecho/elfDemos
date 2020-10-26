@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      // function ActionLink() {
+      //   function handleClick(e) {
+      //     e.preventDefault();
+      //     console.log('e', e)
+      //     console.log('The link was clicked.');
+      //   }
+      //   return (
+      //     <a href="#" onClick={handleClick}>
+      //       Click me
+      //     </a>
+      //   );
+      // }
+      // ReactDOM.render(
+      //   <ActionLink />,
+      //   document.getElementById('example')
+      // );
+      
+      class Toggle extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            isToggleOn: true
+          }
+          // 为了在回调中使用 `this`，这个绑定是必不可少的
+          // this.handleClick = this.handleClick.bind(this)
+        }
+
+        handleClick() {
+          console.log('切换', this.state.isToggleOn)
+          this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+          }))
+        }
+
+        // 此语法确保 `handleClick` 内的 `this` 已被绑定。
+        // 注意: 这是 *实验性* 语法。  推荐使用
+        // handleClick = () => {
+        //   console.log('切换', this.state.isToggleOn)
+        //   this.setState(state => ({
+        //     isToggleOn: !state.isToggleOn
+        //   }))
+        // }
+
+        render() {
+          return (
+            <button onClick={this.handleClick.bind(this)}>
+              {this.state.isToggleOn ? 'On' : 'Off'}  
+            </button>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Toggle />,
+        document.getElementById('example')
+      )
+      
+    </script>
+  </body>
+</html>

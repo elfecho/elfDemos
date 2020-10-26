@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="../build/react.development.js"></script>
+  <script src="../build/react-dom.development.js"></script>
+  <script src="../build/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="example"></div>
+  <script type="text/babel">
+    // function Clock(props) {
+    //   return (
+    //     <div>
+    //       <h1>Hello, world!</h1>
+    //       <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    //     </div>
+    //   );
+    // }
+    class Clock extends React.Component {
+      constructor(props) {
+        super(props)
+        console.log('执行一次', this.props.increment)
+        this.state = {
+          date: new Date(),
+          counter: 1
+        }
+      }
+
+      componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        )
+        // this.setState({
+        //   counter: this.state.counter + this.props.increment
+        // })
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timerID)
+      }
+
+      tick() {
+        this.setState((state, props) => ({
+          date: new Date(),
+          counter: state.counter + props.increment
+        }))
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            <h3>计数器：{this.state.counter}</h3>
+          </div>
+        )
+      }
+    }
+
+    function App() {
+      return (
+        <div>
+          <Clock increment={1} />
+          <Clock increment={2} />
+          <Clock increment={3} />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('example')
+    );
+    
+
+  </script>
+</body>
+
+</html>
