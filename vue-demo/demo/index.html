@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue新增自定义指令</title>
+  <script src="https://lib.baomitu.com/vue/2.6.12/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-dir1>我使用了新增指令</div>
+    <input type="text" v-model="msg" />
+    {{msg| capitalize }}
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        msg: ''
+      },
+      directives: {
+        dir1: {
+          inserted(el) {
+            console.log(el)
+            console.log(arguments)
+            el.style.width = '200px';
+            el.style.height = '200px';
+            el.style.background = 'rgba(0,0,0,0.5)';
+          }
+        }
+      },
+      filters: {
+        capitalize: function (value) {
+          if (!value) return ''
+          value = value.toString()
+          return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+      }
+
+    })
+    
+
+  </script>
+</body>
+</html>
