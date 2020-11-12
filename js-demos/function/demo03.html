@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title>3D翻牌效果 </title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery.js"></script>
+    <style type="text/css">
+        .gallery {
+ 
+}
+.gallery input {
+    display:none;
+    position:absolute;
+}
+.container {
+    position: relative;
+    height:640px;
+    width:320px;
+    transition: 1.5s ease-in-out;
+}
+.container div {
+    position:absolute;
+    left:0;
+    top:0;
+    width:640px;
+    height:320px;
+    transition: 1.5s ease-in-out;
+    border:1px solid #888;
+    backface-visibility: hidden;
+    -webkit-perspective: 1200px;
+}
+.container div.front {
+    transform: rotateY(180deg);
+}
+.container div.back {
+    transform: rotateY(0deg);
+}
+.container label {
+    display:block;
+    width:640px;
+    height:320px;
+    position:absolute;
+    left:0;
+    top:0;
+    display:none;
+    cursor:pointer;
+}
+input:nth-of-type(2n):checked ~ .container div.front {
+    transform: rotateY(0deg);
+}
+input:nth-of-type(2n+1):checked ~ .container div.front {
+    transform: rotateY(180deg);
+}
+input:nth-of-type(2n):checked ~ .container div.back {
+    transform: rotateY(-179.9deg);
+}
+input:nth-of-type(2n+1):checked ~ .container div.back {
+    transform: rotateY(0deg);
+}
+ 
+#p1:checked ~ .container label:nth-of-type(2) {
+    display:block;
+}
+#p1:checked ~ .container div.front {
+    background:url(http://thecodeplayer.com/uploads/media/8k3N3EL.jpg);
+}
+#p1:checked ~ .container div.back {
+    background:url(http://thecodeplayer.com/uploads/media/3yiC6Yq.jpg);
+}
+#p2:checked ~ .container label:nth-of-type(3) {
+    display:block;
+}
+#p2:checked ~ .container div.front {
+    background:url(http://thecodeplayer.com/uploads/media/40Ly3VB.jpg);
+}
+#p2:checked ~ .container div.back {
+    background:url(http://thecodeplayer.com/uploads/media/8k3N3EL.jpg);
+}
+#p3:checked ~ .container label:nth-of-type(4) {
+    display:block;
+}
+#p3:checked ~ .container div.front {
+    background:url(http://thecodeplayer.com/uploads/media/40Ly3VB.jpg);
+}
+#p3:checked ~ .container div.back {
+    background:url(http://thecodeplayer.com/uploads/media/00kih8g.jpg);
+}
+ 
+#p4:checked ~ .container label:nth-of-type(5) {
+    display:block;
+}
+#p4:checked ~ .container div.front {
+    background:url(http://thecodeplayer.com/uploads/media/2rT2vdx.jpg);
+}
+#p4:checked ~ .container div.back {
+    background:url(http://thecodeplayer.com/uploads/media/00kih8g.jpg);
+}
+#p5:checked ~ .container label:nth-of-type(1) {
+    display:block;
+}
+#p5:checked ~ .container div.front {
+    background:url(http://thecodeplayer.com/uploads/media/2rT2vdx.jpg);
+}
+#p5:checked ~ .container div.back {
+    background:url(http://thecodeplayer.com/uploads/media/8k3N3EL.jpg);
+}
+    </style>
+</head>
+
+<body>
+
+  
+<div class="gallery">
+	<input type="radio" name="images" id="p1" checked="checked" />
+	<input type="radio" name="images" id="p2" />
+	<input type="radio" name="images" id="p3" />
+	<input type="radio" name="images" id="p4" />
+	<input type="radio" name="images" id="p5" />
+  <div class="container">
+		<div class="front"></div>
+		<div class="back"></div>
+		<label for="p1"></label>
+		<label for="p2"></label>
+		<label for="p3"></label>
+		<label for="p4"></label>
+		<label for="p5"></label>
+  </div>
+</div>
+</body>
+
+</html>
