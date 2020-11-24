@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
     测试一些工具方法
+    <countTo :startVal='startVal' :endVal='endVal' :decimals='endVal | decimalsFilter' :duration='3000'></countTo>
   </div>
 </template>
 
 <script>
 import jiff from 'jiff'
+import countTo from 'vue-count-to';
 export default {
   name: 'HelloWorld',
   props: {
@@ -13,8 +15,24 @@ export default {
   },
   data() {
     return {
-
+      startVal: 0,
+      endVal: 2017.52,
+      decimals: 2
     }
+  },
+  filters:{
+    decimalsFilter(number){
+      //这里判断这个输出的是几位小数位（自行处理）
+      let len = number.toString().split(".").length > 1 ? number.toString().split(".")[1].length : 0
+      if(len > 0){
+        return len //这里返回插件要显示的几位小数
+      }else{
+        return 0
+      }
+    }
+  },
+  components: {
+    countTo
   },
   created() {
     var a = [
