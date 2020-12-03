@@ -12,6 +12,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: (resolve) => require(['@/pages/about'], resolve)
     }
   ]
 })
