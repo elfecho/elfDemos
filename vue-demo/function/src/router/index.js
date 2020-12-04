@@ -16,7 +16,13 @@ export default new Router({
     {
       path: '/about',
       name: 'About',
-      component: (resolve) => require(['@/pages/about'], resolve)
+      // component: (resolve) => require(['@/pages/about'], resolve)
+      component: () => import('./../pages/about')
+    },
+    {
+      path: '/vmodel',
+      name: 'Vmodel',
+      component: () => import('./../pages/vmodel')
     }
   ]
 })

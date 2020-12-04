@@ -1,27 +1,40 @@
 <template>
   <div>
     首页~~~~~
+    <router-link to="/about">about</router-link>
+    <router-link to="/vmodel">自定义v-model</router-link>
     <div>
-      <h2>这里是list内容</h2>
-      <h2>{{count}}</h2>
-      <div>
-        <button @click="handleAddClick(10)">增加</button>
-        <button @click="handleReduceClick(10)">减少</button>
-      </div>
-      <div>
-        
-        <h2>{{list}}</h2>
+      <div class="con">
+        <h2>这里是根目录的store内容</h2>
+        <h2>count: {{count}}</h2>
+        <h2>List:::{{list}}</h2>
+        <h2>getterCount: {{getterCount}}</h2>
         <h3>大于6个字符的：{{maxlist}}</h3>
-        <button>获取大于6个字符的</button>
+        
+      </div>
+      
+      <div class="con">
+        <h2>这里是home目录的store内容</h2>
+        <h2>count: {{homeCount}}</h2>
+        <h2>getterCount: {{getterHomeCount}}</h2>
+        <div>
+          <button @click="handleAddClick(10)">增加</button>
+          <button @click="handleReduceClick(10)">减少</button>
+        </div>
+        <h2>List: {{homeList}}</h2>
+        
+        <h3>大于6个字符的：{{HomeMaxlist}}</h3>
+        <button @click="mutationsAddList">mutationsAddList</button>
+        
       </div>
     </div>
 
-    <router-link to="/about">about</router-link>
+    
   </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -29,7 +42,9 @@ export default {
   },
   created() {
     console.log(mapState)
+    console.log(this.$store.getters.filterList)
   },
+  
   computed: {
     // count(){
     //   return this.$store.getters.getterCount
@@ -39,17 +54,29 @@ export default {
     // },
     ...mapState({
       count: 'count',
-      list: 'list'
+      list: 'list',
+      homeCount: state => state.home.count,
+      homeList: state => state.home.list
     }),
     ...mapGetters({
-      maxlist: 'filterList'
+      maxlist: 'filterList',
+      getterCount: 'getterCount',
+      
+      HomeMaxlist: 'home/filterList',
+      getterHomeCount: 'home/getterCount'
     })
   },
   methods: {
     ...mapActions({
       handleAddClick: 'actionsAddCount',
       handleReduceClick: 'actionsReduceCount'
-    })
+    }),
+    ...mapMutations([
+      'addList'
+    ]),
+    mutationsAddList() {
+      this.addList('588546')
+    }
     // handleAddClick(n) {
     //   this.$store.dispatch('actionsAddCount', n)
     // },
@@ -66,6 +93,10 @@ export default {
 }
 </script>
 
-<style scoped lang ="scss">
-
+<style scoped>
+.con {
+  border: 1px solid #333;
+  padding: 20px;
+  margin-bottom: 10px;
+}
 </style>
