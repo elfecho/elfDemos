@@ -1,13 +1,13 @@
 
-// CMD导入方式
+// commonJS导入方式
 // import Header from './src/header'
 // import Sidebar from './src/sidebar'
 // import Content from './src/content'
 
 // AMD导入方式
-const Header = require('./src/header')
-const Sidebar = require('./src/sidebar')
-const Content = require('./src/content')
+const Header = require('./header')
+const Sidebar = require('./sidebar')
+const Content = require('./content')
 
 new Header()
 new Sidebar()
