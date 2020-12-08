@@ -1,17 +1,18 @@
+import avator from './avatar.jpg';
+import style from './index.scss';
+import createAvatar from './avatar'
 
-// commonJS导入方式
-// import Header from './src/header'
-// import Sidebar from './src/sidebar'
-// import Content from './src/content'
 
-// AMD导入方式
-const Header = require('./header')
-const Sidebar = require('./sidebar')
-const Content = require('./content')
+createAvatar()
 
-new Header()
-new Sidebar()
-new Content()
+
+var img = new Image();
+img.src = avator;
+img.classList.add(style.avatar);
+
+var root = document.getElementById('root');
+root.append(img);
+
 
 
 
