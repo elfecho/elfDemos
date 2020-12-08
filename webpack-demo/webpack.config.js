@@ -9,13 +9,18 @@ module.exports = {
     rules: [{
       test: /\.(jpg|png|gif)$/,
       use: [{
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           // placeholder 占位符
           name: '[name]_[hash].[ext]',
           outputPath: 'images/',
-          useRelativePath: true
+          limit: 10240
         }
+      }]
+    }, {
+      test: /\.(eot|ttf|svg|woff)$/,
+      use: [{
+        loader: 'file-loader'
       }]
     }, {
       test: /\.scss$/,
@@ -25,12 +30,11 @@ module.exports = {
         {
           loader: 'css-loader',
           options: {
-            importLoaders: 2, // 无论js引入scss文件还是scss引入scss文件都会调用这些loader
-            modules: true
+            importLoaders: 2 // 无论js引入scss文件还是scss引入scss文件都会调用这些loader
           }
-        }, 
-        'sass-loader',
-        'postcss-loader'
+        },
+        'postcss-loader',
+        'sass-loader'
       ]
     }]
   },
