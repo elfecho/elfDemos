@@ -1,4 +1,4 @@
-import './index.scss'
-var root = document.getElementById('root')
+var root = document.createElement('root');
+import './index.scss';
 
-root.innerHTML = '<div class="iconfont icon-pingjia"></div>'
+root.innerHTML = '<div class="iconfont icon-changjingguanli"></div>';

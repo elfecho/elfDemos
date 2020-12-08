@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -19,9 +20,9 @@ module.exports = {
       }]
     }, {
       test: /\.(eot|ttf|svg|woff)$/,
-      use: [{
+      use: {
         loader: 'file-loader'
-      }]
+      }
     }, {
       test: /\.scss$/,
       // css编译执行顺序，从下到上，从右到左
@@ -33,11 +34,14 @@ module.exports = {
             importLoaders: 2 // 无论js引入scss文件还是scss引入scss文件都会调用这些loader
           }
         },
-        'postcss-loader',
-        'sass-loader'
+        'sass-loader',
+        'postcss-loader'
       ]
     }]
   },
+  plugins: [new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  })],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
