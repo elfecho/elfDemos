@@ -3,21 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-
-// presets: [
-//   [
-//     '@babel/preset-env', 
-//     {
-//       useBuiltIns: 'usage',
-//       corejs: 3,
-//       targets: {
-//         chrome: "67"
-//       }
-//     }
-//   ]
-// ]
-
-
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
@@ -40,6 +25,11 @@ module.exports = {
           limit: 10240
         }
       }]
+    }, {
+      test: /\.(eot|ttf|svg|woff)$/,
+      use: {
+        loader: 'file-loader'
+      }
     }, {
       test: /\.scss$/,
       use: [

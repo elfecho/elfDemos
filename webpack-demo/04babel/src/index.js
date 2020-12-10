@@ -1,5 +1,5 @@
 // import "@babel/polyfill";
-import 'regenerator-runtime/runtime';
+// import 'regenerator-runtime/runtime';
 
 const arr = [
   new Promise(() => {
