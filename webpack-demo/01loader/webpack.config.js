@@ -1,10 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: {
-    main: './src/index.js'
+    main: './src/index.js',
+    sub: './src/index.js'
   },
   module: {
     rules: [{
@@ -41,9 +43,10 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({
     template: 'src/index.html'
-  })],
+  }), new CleanWebpackPlugin(['dist'])],
   output: {
-    filename: 'bundle.js',
+    publicPath: 'http://cdn.com.cn',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   }
 }

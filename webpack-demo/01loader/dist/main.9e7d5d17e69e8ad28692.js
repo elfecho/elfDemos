@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "http://cdn.com.cn";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -159,7 +159,7 @@ eval("module.exports = __webpack_require__.p + \"15896c714201eaef1215af2ba0b2817
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"cc8887715dedb4956bd6e873877cd9b9.svg\";\n\n//# sourceURL=webpack:///./src/font/iconfont.svg?");
+eval("module.exports = __webpack_require__.p + \"9c99b42a8db187e903c1e1557d51007a.svg\";\n\n//# sourceURL=webpack:///./src/font/iconfont.svg?");
 
 /***/ }),
 
@@ -182,7 +182,7 @@ eval("module.exports = __webpack_require__.p + \"a1f61df510ac3e2b111d3ca0ac8421a
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\nvar root = document.createElement('root');\r\n\r\n\r\nroot.innerHTML = '<div class=\"iconfont icon-changjingguanli\"></div>';\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\nvar root = document.getElementById('root');\r\n\r\n\r\nroot.innerHTML = '<div class=\"iconfont icon-changjingguanli\"></div>';\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
