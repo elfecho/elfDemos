@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom'
+// import _ from 'lodash';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        Hello World
-      </div>
-    )
-  }
+// console.log(_.join(['a', 'b', 'c'], '****'))
+
+function getComponent() {
+  return import(/* webpackChunkName: "lodash" */'lodash').then(({ default: _}) => {
+    var element = document.createElement('div')
+    element.innerHTML = _.join(['hello', 'world'], '-')
+    return element
+  })
 }
 
-ReactDom.render(<App />, document.getElementById('root'))
+getComponent().then(element => {
+  document.body.appendChild(element)
+})
