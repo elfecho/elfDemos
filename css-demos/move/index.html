@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动动画</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      height: 500vh;
+      background: url(./images/bg.jpg) repeat-y center;
+    }
+    .container {
+      width: 1138px;
+      margin: 0 auto;
+    }
+    .seize {
+      height: 450px;
+      width: 100%;
+      background-color: #ffffff;
+      text-align: center;
+    }
+    .box {
+      position: relative;
+      background-color: #f0f0f0;
+      width: 200px;
+      height: 300px;;
+      border: 1px solid #333;
+      transition: all .5s;
+    }
+    .box_ll {
+      position: relative;
+      width: 200px;
+      height: 300px;
+    }
+    
+    .icon {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      transform: translateX(-50%);
+      transition: all .5s;
+    }
+    .title {
+      position: absolute;
+      width: 100%;
+      top: 100px;
+      line-height: 60px;
+      text-align: center;
+    }
+
+    .tab_HL {
+      width: 100%;
+      height: 300px;
+      font-size: 0;
+      line-height: 999;
+      display: none;
+    }
+
+    .tab.active {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+    .tab.active .list {
+      width: 1136px;
+      margin: 0 auto;
+    }
+
+    .tab.active .box_ll .box {
+      height: 100px;
+      background-color: red;
+    }
+    .tab.active .box_ll .icon {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+    }
+    .tab.active .box_ll .title {
+      position: absolute;
+      top: 50%;
+      line-height: 60px;
+      margin-top: -30px;
+      margin-left: 20px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="seize">
+    <h1>我是占位的哦~~~</h1>
+  </div>
+  <div class="container">
+    <div class="tab">
+      <div class="list">
+        <div class="item">
+          <div class="box_ll">
+            <div class="box">
+              <img src="./images/on.png" class="icon" alt="">
+              <h2 class="title">我是标题</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab_HL"></div>
+    <div class="content">
+      1、仅有用心将心上的雾气洗干净，荣光才会照亮最初的梦想。早安！
+
+  　　2、早晨，清凉的空气如牛乳般新鲜，冉起的太阳如梦想般期望。天明，亮起的不只是阳光，还要有你的好心境哦，早晨好！
+
+  　　3、睁开睡眼，整理衣衫，精神抖擞，大步向前。晨光耀眼，阳光青年，为了梦想，心向蓝天。展现微笑，新的一天。早安！
+
+  　　4、起床啦，我来帮你把太阳挂起。早上好！
+
+  　　5、新的一天干净的痛苦必须会沉淀，沉淀成悠闲，悠闲是痛苦的补偿，痛苦是悠闲的衬垫。早安！
+
+  　　6、未来不迎，过往不恋，当下的每一个瞬间就是生命的唯一瞬间。活好了当下，就活好了一生。
+
+  　　7、生活是种律动，须有光有影，有左有右，有晴有雨，滋味就含在这变而不猛的曲折里。早上好！
+
+  　　8、拖延将不断滋养恐惧，而行动是治愈恐惧的良药，早安，进取行动的您！
+
+  　　9、以后的路还长，你要继续斗志昂扬。早安！
+
+  　　10、每一天早晨，我都再一次提醒自我，生命短暂而完美，没时间纠结，没时间计较。努力才是最重要的，早安！
+
+  　　11、完美的日子给你带来欢乐，阴暗的日子给你带来经验。所以，不要对生命中的任何一天怀有遗憾。早晨好！
+
+  　　12、熬过几个无人知晓的秋冬春夏，撑过去，一切都会顺着，你想要的方向走。
+
+  　　13、预定一米阳光，装进心房。早安!
+
+  　　14、珍惜那些朋友圈里不聊天，却天天给你点赞的人，不是因为你的动态写的多好，只是因为这个世界上还有一种感情，叫关注。早安！
+
+  　　15、生活像一面镜子，你喜笑颜开，它回你欢乐欣悦；你愁眉苦脸，它回你一筹莫展。人生不会事事如意，但依然需要你的微笑应对。做一个知足常乐的人，开开心心过好每一天。早安！
+
+  　　16、成功的起点，往往是在山穷水尽时，期望的萌生，常出此刻峰回路转时。早安！
+
+  　　17、你注定走不进她的世界，她注定走过你的生活。
+
+  　　18、成年人的世界不存在永恒的靠山最强的靠山就是你的努力和独立！早安！
+
+  　　19、储存阳光，必有远芳。心中有暖，又何惧人生荒凉。早晨好！
+
+  　　20、世界上最棒的事，就是每一天醒来都有崭新的一天，完全免费，永不断货。早晨好！
+
+  　　21、当你不再急于否认错误时，你就学到了重要的一课。早安！
+
+  　　22、人生没有完美，幸福没有满分！时光静好，心，永远微笑向暖；不假想，不期望，过好每个今日，让日子过得单纯而完美；完美的，留在心底；遗憾的，随风散去。开心欢乐每一天！早安！
+
+  　　23、因为孤独是生命的常态，所以陪伴才显得格外珍贵。永远不要因为新鲜感，扔掉一向陪伴你的人。早安！
+
+  　　24、经过黑暗，才能懂得光明的意义，经历风雨，才能终见彩虹！温室里的花朵经不起风吹雨打，仅有独自生长的花朵才能笑傲风雨，绽放得更加美丽！早安！
+
+  　　25、做一个进取向上的人呀，读温柔的句子，见阳光的人，眼里饱含笑意，早安~
+
+  　　26、世间所有完美，都恰逢其时。早晨好！
+
+  　　27、善良的人总是欢乐！感恩的人总是富有！让我们带着感恩与善良，不忘初心，温暖前行。早安！
+    </div>
+    
+  </div>
+  
+  <script>
+    const tab_HL = document.querySelector('.tab_HL')
+    const tab = document.querySelector('.tab')
+    document.addEventListener('scroll', function(e) {
+      console.log(window.pageYOffset)
+      if (window.pageYOffset > 456) {
+        console.log('抵达临界点')
+        tab_HL.style.display = 'block'
+        tab.classList.add('active')
+      } else {
+        tab_HL.style.display = 'none'
+        tab.classList.remove('active')
+      }
+    }, true)
+  </script>
+</body>
+</html>

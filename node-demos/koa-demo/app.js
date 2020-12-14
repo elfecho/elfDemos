@@ -1,19 +1,16 @@
 const Koa = require('koa');
+const parser = require('koa-bodyparser')
+const InitManager = require('./core/init')
+const catchError = require('./middlewares/exceptions')
+
 const app = new Koa();
 
-app.use(async ctx => {
-  ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
-  ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  ctx.body = {
-    data: [
-      "liu",
-      "jun",
-      "hao"
-    ]
-  }
-});
+app.use(catchError)
+app.use(parser())
 
-app.listen(8089, () => {
-  console.log('端口已开启， localhost:8089')
+
+InitManager.initCore(app)
+
+app.listen(3000, () => {
+  console.log('端口已开启， localhost:3000')
 });
