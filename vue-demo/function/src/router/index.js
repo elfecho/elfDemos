@@ -20,6 +20,11 @@ export default new Router({
       component: () => import('./../pages/about')
     },
     {
+      path: '/about/detail',
+      name: 'AboutDetail',
+      component: () => import('./../pages/about/detail')
+    },
+    {
       path: '/vmodel',
       name: 'Vmodel',
       component: () => import('./../pages/vmodel')

@@ -1,7 +1,8 @@
 <template>
   <div>
     首页~~~~~
-    <router-link to="/about">about</router-link>
+    <!-- <router-link to="/about">about</router-link> -->
+    <button @click="navAbout">跳转到about</button>
     <router-link to="/vmodel">自定义v-model</router-link>
     <div>
       <div class="con">
@@ -76,6 +77,10 @@ export default {
     ]),
     mutationsAddList() {
       this.addList('588546')
+    },
+    navAbout() {
+      console.log('跳转路由')
+      this.$router.push({path:'/about'})
     }
     // handleAddClick(n) {
     //   this.$store.dispatch('actionsAddCount', n)
