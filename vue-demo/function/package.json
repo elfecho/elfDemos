@@ -10,11 +10,13 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "jiff": "^0.7.3",
+    "lodash": "^4.17.20",
     "sass-loader": "^10.1.0",
     "vue": "^2.6.11",
     "vue-count-to": "^1.0.13",
     "vue-list": "^1.0.3",
     "vue-router": "^3.4.9",
+    "vue-wechat-title": "^2.0.7",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
