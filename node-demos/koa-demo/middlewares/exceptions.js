@@ -7,7 +7,12 @@ const catchError = async (ctx, next) => {
     // error 堆栈调用信息
     // error 简化 清晰明了的信息 给前端
     // HTTP Status Code 2xx 4xx 5xx
-    if (error instanceof HttpException) {
+    const isHttpException = error instanceof HttpException
+    const isDev = global.config.environment === 'dev'
+    if (isDev && !isHttpException) {
+      throw error
+    } 
+    if (isHttpException) {
       ctx.body = {
         msg: error.msg,
         error_code: error.errorCode,
