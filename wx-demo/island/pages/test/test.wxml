@@ -1,0 +1,7 @@
+<!--pages/test/test.wxml-->
+
+<button bindtap="onGetToken" type="primary">获取token</button>
+<button bindtap="onVerifyToken" type="primary">验证token</button>
+
+
+<button bindtap="onGetLatest" type="warn">获取最新期刊</button>
