@@ -20,6 +20,14 @@ const sequelize = new Sequelize(dbName, user, password, {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at',
     underscored: true, // 将驼峰命名改为下划线命名
+    freezeTableName: true,
+    scopes: {
+      bh: {
+        attributes: {
+          exclude: ['created_at', 'updated_at', 'deleted_at'] // 移除时间的返回字段
+        }
+      }
+    }
   }
 })
 

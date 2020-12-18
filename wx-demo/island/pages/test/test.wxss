@@ -3,3 +3,7 @@
 button {
   margin-bottom: 20rpx;
 }
+
+.btn {
+  margin-bottom: 20rpx;
+}

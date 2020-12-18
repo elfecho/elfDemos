@@ -4,4 +4,12 @@
 <button bindtap="onVerifyToken" type="primary">验证token</button>
 
 
-<button bindtap="onGetLatest" type="warn">获取最新期刊</button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetLatest">获取最新期刊</l-button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetPrevious">获取上一期</l-button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetNext">获取下一期</l-button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetLike">获取点赞信息</l-button>
+
+<l-button bindtap="onLike" size="long" l-class="btn">点赞</l-button>
+<l-button bindtap="onDislike" size="long" l-class="btn">取消点赞</l-button>
+
+

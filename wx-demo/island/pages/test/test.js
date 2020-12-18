@@ -28,8 +28,10 @@ Page({
         url: 'http://localhost:3000/v1' + url,
         data: data,
         method: 'POST',
+        header: {
+          Authorization: this._encode()
+        },
         success(res) {
-          console.log(res)
           const code = res.statusCode.toString()
           if (code.startsWith('2')) {
             resolve(res)
@@ -45,7 +47,7 @@ Page({
   },
   _encode() {
     const token = wx.getStorageSync('token')
-    const base64 = Base64(token+':')
+    const base64 = Base64.encode(token+':')
     // 完整的传参  Authorization: Basic base64(account:password)
     return 'Basic ' + base64
   },
@@ -73,11 +75,41 @@ Page({
   },
 
   onGetLatest() {
-    this._encode()
-    return false
-    this.getReq('/classic/latest', {
-      token: wx.getStorageSync('token')
+    this.getReq('/classic/latest').then(res => {
+      console.log(res)
+    })
+  },
+  onGetNext() {
+    this.getReq('/classic/6/next').then(res => {
+      console.log(res)
+    })
+  },
+
+  onGetPrevious() {
+    this.getReq('/classic/6/previous').then(res => {
+      console.log(res)
+    })
+  },
+  onLike() {
+    this.postReq('/like', {
+      art_id: 1,
+      type: 100
     }).then(res => {
+      console.log(res)
+    })
+  },
+  onDislike() {
+    this.postReq('/like/cancel', {
+      art_id: 1,
+      type: 100
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log('err:', err)
+    })
+  },
+  onGetLike() {
+    this.getReq('/classic/200/1/favor').then(res => {
       console.log(res)
     })
   }
