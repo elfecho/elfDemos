@@ -11,7 +11,7 @@ class Flow extends Model{
         // art.dataValues.index = flow.index 不严谨
         art.setDataValue('index', index)// 类的序列化 对象
         art.setDataValue('like_status', likeLatest)
-
+        // art.exclude = ['index','like_status']
         return art
     }
     static async getAround(index, uid, mode) {
