@@ -1,116 +1,267 @@
-// pages/test/test.js
-import {Base64} from 'js-base64'
+import {
+  Base64
+} from 'js-base64'
+
 Page({
-  data: {
-
-  },
-  getReq(url, data) {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        url: 'http://localhost:3000/v1' + url,
-        data: data,
-        method: 'GET',
-        header: {
-          Authorization: this._encode()
-        },
-        success(res) {
-          resolve(res)
-        },
-        fail(err) {
-          reject(err)
-        }
-      })
-    })
-  },
-  postReq(url, data) {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        url: 'http://localhost:3000/v1' + url,
-        data: data,
-        method: 'POST',
-        header: {
-          Authorization: this._encode()
-        },
-        success(res) {
-          const code = res.statusCode.toString()
-          if (code.startsWith('2')) {
-            resolve(res)
-          } else {
-            reject(res)
-          }
-        },
-        fail(err) {
-          reject(err)
-        }
-      })
-    })
-  },
-  _encode() {
-    const token = wx.getStorageSync('token')
-    const base64 = Base64.encode(token+':')
-    // 完整的传参  Authorization: Basic base64(account:password)
-    return 'Basic ' + base64
-  },
-  onLoad() {
-
-  },
   onGetToken() {
+    // code
     wx.login({
       success: (res) => {
-        this.postReq('/token', {
-          account: res.code,
-          type: 100
-        }).then(res => {
-          wx.setStorageSync('token', res.data.token)
-        })
+        if (res.code) {
+          wx.request({
+            url: 'http://localhost:3000/v1/token',
+            method: 'POST',
+            data: {
+              account: res.code,
+              type: 100
+            },
+            success: (res) => {
+              console.log(res.data)
+              const code = res.statusCode.toString()
+              if (code.startsWith('2')) {
+                wx.setStorageSync('token', res.data.token)
+              }
+            }
+          })
+        }
       }
     })
   },
+
   onVerifyToken() {
-    this.postReq('/token/verify', {
-      token: wx.getStorageSync('token')
-    }).then(res => {
-      console.log(res)
+    wx.request({
+      url: 'http://localhost:3000/v1/token/verify',
+      method: 'POST',
+      data: {
+        token: wx.getStorageSync('token')
+      },
+      success: res => {
+        console.log(res.data)
+      }
     })
   },
 
   onGetLatest() {
-    this.getReq('/classic/latest').then(res => {
-      console.log(res)
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/latest',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
   },
+
   onGetNext() {
-    this.getReq('/classic/6/next').then(res => {
-      console.log(res)
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/6/next',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
   },
 
   onGetPrevious() {
-    this.getReq('/classic/6/previous').then(res => {
-      console.log(res)
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/6/previous',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
   },
+
+  onGetClassicFavor() {
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/100/1/favor',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onGetMyFavorList() {
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/favor',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onGetClassicDetail() {
+    wx.request({
+      url: 'http://localhost:3000/v1/classic/200/2',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
   onLike() {
-    this.postReq('/like', {
-      art_id: 1,
-      type: 100
-    }).then(res => {
-      console.log(res)
+    wx.request({
+      url: 'http://localhost:3000/v1/like',
+      method: 'POST',
+      data: {
+        art_id: 1,
+        type: 100
+      },
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
   },
-  onDislike() {
-    this.postReq('/like/cancel', {
-      art_id: 1,
-      type: 100
-    }).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log('err:', err)
+
+  onDisLike() {
+    wx.request({
+      url: 'http://localhost:3000/v1/like/cancel',
+      method: 'POST',
+      data: {
+        art_id: 1,
+        type: 100
+      },
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
   },
-  onGetLike() {
-    this.getReq('/classic/200/1/favor').then(res => {
-      console.log(res)
+
+  onGetHotBookList() {
+    wx.request({
+      url: 'http://localhost:3000/v1/book/hot_list',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
     })
+  },
+
+  onGetBookDetail(){
+    wx.request({
+      url: 'http://localhost:3000/v1/book/1120/detail',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onBookSearch() {
+    wx.request({
+      url: 'http://localhost:3000/v1/book/search',
+      method: 'GET',
+      data:{
+        q:'韩寒',
+        count:5
+      },
+      // like key%
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onGetMyFavorsBookCount(){
+    wx.request({
+      url: 'http://localhost:3000/v1/book/favor/count',
+      method: 'GET',
+      // like key%
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onGetBookFavor() {
+    wx.request({
+      url: 'http://localhost:3000/v1/book/1120/favor',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onGetComments() {
+    wx.request({
+      url: 'http://localhost:3000/v1/book/1120/short_comment',
+      method: 'GET',
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  onAddShortComment() {
+    wx.request({
+      url: 'http://localhost:3000/v1/book/add/short_comment',
+      method: 'POST',
+      data: {
+        content:'春风十里不如有你春风十里不如有你',
+        book_id:1120
+      },
+      // like key%
+      success: res => {
+        console.log(res.data)
+      },
+      header: {
+        Authorization: this._encode()
+      }
+    })
+  },
+
+  _encode() {
+    // account:password
+    // token
+    // token:
+    const token = wx.getStorageSync('token')
+    const base64 = Base64.encode(token + ':')
+    // Authorization:Basic base64(account:password)
+    return 'Basic ' + base64
   }
 })
