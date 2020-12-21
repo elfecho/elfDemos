@@ -8,6 +8,8 @@
 <l-button size="long" l-class="btn" type="warning" bindtap="onGetPrevious">获取上一期</l-button>
 <l-button size="long" l-class="btn" type="warning" bindtap="onGetNext">获取下一期</l-button>
 <l-button size="long" l-class="btn" type="warning" bindtap="onGetLike">获取点赞信息</l-button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetmyLike">获取我喜欢的</l-button>
+<l-button size="long" l-class="btn" type="warning" bindtap="onGetmyLikeDetail">获取我喜欢的详情</l-button>
 
 <l-button bindtap="onLike" size="long" l-class="btn">点赞</l-button>
 <l-button bindtap="onDislike" size="long" l-class="btn">取消点赞</l-button>

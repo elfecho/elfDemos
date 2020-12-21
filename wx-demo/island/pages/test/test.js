@@ -109,7 +109,17 @@ Page({
     })
   },
   onGetLike() {
-    this.getReq('/classic/200/1/favor').then(res => {
+    this.getReq('/classic/100/1/favor').then(res => {
+      console.log(res)
+    })
+  },
+  onGetmyLike() {
+    this.getReq('/classic/favor').then(res => {
+      console.log(res)
+    })
+  },
+  onGetmyLikeDetail() {
+    this.getReq('/classic/100/1').then(res => {
       console.log(res)
     })
   }
