@@ -28,6 +28,11 @@ export default new Router({
       path: '/vmodel',
       name: 'Vmodel',
       component: () => import('./../pages/vmodel')
+    },
+    {
+      path: '/tree',
+      name: 'tree',
+      component: () => import('./../pages/tree')
     }
   ]
 })

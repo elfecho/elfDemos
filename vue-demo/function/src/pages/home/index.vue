@@ -4,6 +4,7 @@
     <!-- <router-link to="/about">about</router-link> -->
     <button @click="navAbout">跳转到about</button>
     <router-link to="/vmodel">自定义v-model</router-link>
+    <router-link to="/tree">tree练习</router-link>
     <div>
       <div class="con">
         <h2>这里是根目录的store内容</h2>
