@@ -1,0 +1,17 @@
+/* pages/test/test.wxss */
+.cover-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999999999999;
+  /* opacity: .7; */
+}
+.kkk {
+  width: 200px;
+  height: 200px;
+  background: red;
+}
+.btn {
+  
+  z-index: 888;
+}

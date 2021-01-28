@@ -32,7 +32,12 @@ export default new Router({
     {
       path: '/tree',
       name: 'tree',
-      component: () => import('./../pages/tree')
+      component: () => import('./../pages/tree/tree')
+    },
+    {
+      path: '/trees',
+      name: 'trees',
+      component: () => import('./../pages/tree/trees')
     }
   ]
 })

@@ -1,0 +1,8 @@
+<!--pages/test/test.wxml-->
+<!-- <text>pages/test/test.wxml</text> -->
+<web-view src="{{weburl}}">
+  <cover-view class="cover-view">
+    <button class="btn">5446</button>
+  </cover-view>
+
+</web-view>

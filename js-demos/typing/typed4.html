@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typed.js实现打字效果</title>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+</head>
+<body>
+  <input type="text" class="content" name="" style="width: 80%;">
+  <br>
+  <br>
+  <button class="start">开始</button>
+  <button class="stop">暂停</button>
+  <button class="toggle">切换</button>
+  <button class="reset">重置</button>
+</body>
+<script>
+const startBtn = document.querySelector('.start');
+const stopBtn = document.querySelector('.stop');
+const toggleBtn = document.querySelector('.toggle');
+const resetBtn = document.querySelector('.reset');
+const typed = new Typed('.content',{
+  strings: ['雨过白鹭州，留恋铜雀楼，斜阳染幽草，几度飞红，摇曳了江上远帆，回望灯如花，未语人先羞。'],
+  typeSpeed: 200,
+  startDelay: 100,
+  loop: true,
+  loopCount: Infinity,
+  bindInputFocusEvents:true
+});
+startBtn.onclick = function () {
+  typed.start();
+}
+stopBtn.onclick = function () {
+  typed.stop();
+}
+toggleBtn.onclick = function () {
+  typed.toggle();
+}
+resetBtn.onclick = function () {
+  typed.reset();
+}
+</script>
+</html>
