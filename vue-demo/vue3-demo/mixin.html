@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // 局部mixin
+    const myMixin = {
+      data() {
+        return {
+          number: 2,
+          count: 222
+        }
+       
+      },
+      methods: {
+        handleClick() {
+          console.log('this is mixin')
+        }
+      },
+    }
+    const app = Vue.createApp({
+      data(){
+        return {
+          number: 1,
+          
+        }
+      },
+      mixins: [myMixin],
+      methods: {
+        // handleClick() {
+        //   // this.number += 1
+        //   console.log('this is app')
+        // }
+      },
+      template: `
+        <div>{{number}}</div>
+        <child />
+        <button @click="handleClick">点击</button>
+      `
+    })
+
+    // 全局mixin
+    // app.mixin({
+    //   data() {
+    //     return {
+    //       number: 2,
+    //       count: 222
+    //     }
+       
+    //   },
+    //   methods: {
+    //     handleClick() {
+    //       console.log('this is mixin')
+    //     }
+    //   },
+    // })
+    app.component('child', {
+      mixins: [myMixin],
+      template: '<div>{{count}}</div>'
+    })
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // 局部mixin
+    const myMixin = {
+      number: 11
+    }
+    const app = Vue.createApp({
+      number: 2,
+      mixins: [myMixin],
+      template: `
+        <div>{{this.$options.number}}</div>
+      `
+    })
+    // vue的应用上或vue的组件上，所有的内容通过vue处理后都会挂载在$options
+    // 处理自定义属性的优先级
+    app.config.optionMergeStrategies.number = (mixinVal, appValue, vm) => {
+      return mixinVal || appValue
+    }
+
+
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

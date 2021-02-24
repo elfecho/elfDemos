@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .area{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 300px;
+      background-color: #333;
+      z-index: 88;
+    }
+    .mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="hello"></div>
+  <script>
+    // 自定义指令 directive
+
+    const app = Vue.createApp({
+      // directives,
+      data() {
+        return {
+          show: false,
+          distance: 110
+        }
+      },
+      methods: {
+        handleBtnClick() {
+          this.show = !this.show
+        }
+      },
+      template: `
+        <div>
+          <div class="area">
+            <button @click="handleBtnClick">按钮</button>
+            <teleport to="#hello">
+              <div class="mask" v-show="show"></div>
+            </teleport>
+          </div>
+        </div>
+      `
+    })
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

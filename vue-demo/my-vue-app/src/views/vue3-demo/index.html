@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="counter">
+    Counter: {{ counter }}
+    <button @click="stopTimer">Stop timer</button>
+    <span v-bind:title="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+    <p>{{ resMsg }}</p>
+    <button v-on:click="reverseMessage">反转 Message</button>
+  </div>
+  <script>
+    const Counter = {
+      data() {
+        return {
+          counter: 0,
+          message: 'You loaded this page on ' + new Date().toLocaleString(),
+          resMsg: 'Hello Vue.js!'
+        }
+      },
+      mounted() {
+        this.timer = setInterval(() => {
+          this.counter++
+        }, 1000)
+      },
+      methods: {
+        stopTimer() {
+          clearInterval(this.timer)
+        },
+        reverseMessage() {
+          this.resMsg = this.resMsg
+            .split('')
+            .reverse()
+            .join('')
+        }
+      },
+    }
+    Vue.createApp(Counter).mount('#counter')
+  </script>
+</body>
+</html>

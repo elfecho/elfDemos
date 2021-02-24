@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .header{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // 自定义指令 directive
+
+    const app = Vue.createApp({
+      // directives,
+      data() {
+        return {
+          toggle: true,
+          distance: 110
+        }
+      },
+      template: `
+        <div>
+          <div v-pos:bottom="distance" class="header">
+            <input  />
+          </div>
+        </div>
+      `
+    })
+    // 全局自定义指令
+    // app.directive('pos', {
+    //   mounted(el, binding) {
+    //     el.style.top = `${binding.value}px`
+    //   },
+    //   updated(el, binding) {
+    //     el.style.top = `${binding.value}px`
+    //   },
+    // })
+    // 简写版 (条件是初始化跟更新是一样的操作时)
+    app.directive('pos', (el, binding) => {
+      console.log(binding)
+      el.style[binding.arg] = `${binding.value}px`
+    })
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>
