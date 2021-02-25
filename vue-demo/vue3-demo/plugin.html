@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .area{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 300px;
+      background-color: #333;
+      z-index: 88;
+    }
+    .mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // plugin 插件, 也是把通用性的功能封装起来
+    const myPlugin = {
+      install(app, options) {
+        console.log('options', options)
+        // 扩展vue全局变量
+        app.provide('name', 'elfecho');
+        app.directive('focus', {
+          mounted(el) {
+            el.focus()
+          }
+        })
+        app.mixin({
+          mounted() {
+            console.log('mixin') // 这里打印了两次，因为父子组件都执行这个生命周期函数
+          },
+        })
+        // vue底层扩展全局属性
+        app.config.globalProperties.$sayHello = 'hello world'
+      }
+    }
+    const app = Vue.createApp({
+      data () {
+        return {
+          
+        }
+      },
+      mounted() {
+        console.log(this.$sayHello)
+      },
+      template: `
+        <my-title></my-title>
+      `
+    })
+    app.component('my-title', {
+      inject: ['name'],
+      template: `
+        <h1>{{name}}</h1>
+        <input v-focus/>
+      `
+    })
+
+    app.use(myPlugin, {
+      name: 'elf'
+    })
+    
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

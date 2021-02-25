@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .area{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 300px;
+      background-color: #333;
+      z-index: 88;
+    }
+    .mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="hello"></div>
+  <script>
+    // render function
+    const app = Vue.createApp({
+      data () {
+        return {
+            name: '大漠'
+        }
+      },
+      methods: {
+        handleInput(val) {
+          console.log(val)
+        }
+      },
+      template: `
+        <my-title :level="1">
+          hello
+        </my-title>
+        {{name}}
+        <el-input :name="name" @input="handleInput"></el-input>
+      `
+    })
+    app.component('my-title', {
+      props: ['level'],
+      render() {
+        const { h } = Vue;
+        return h('h' + this.level, {}, [
+          this.$slots.default()
+          // 重复的字段，可以使用工厂函数
+          // Array.apply(null, { length: 20 }).map(function () {
+          //   return h('p', 'hi')
+          // })
+        ])
+      }
+      // template: `
+      //   <el-input>
+      //     <h1 v-if="level === 1"><slot /></h1>
+      //   </el-input>
+      // `
+    })
+    app.component('el-input', {
+      render: function (createElement) {
+        // var self = this
+        const {h} = Vue;
+        return h('input', {
+          domProps: {
+            value: this.name
+          },
+          on: {
+            input: function (event) {
+              this.$emit('input', event.target.value)
+            }
+          }
+        })
+      },
+      props: ['name']
+    })
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

@@ -6,58 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vue3.0 demo</title>
   <script src="https://unpkg.com/vue@next"></script>
-  <style>
-    .area{
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 200px;
-      height: 300px;
-      background-color: #333;
-      z-index: 88;
-    }
-    .mask {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background-color: #000;
-      opacity: 0.5;
-    }
-  </style>
 </head>
 <body>
   <div id="root"></div>
-  <div id="hello"></div>
   <script>
-    // 自定义指令 directive
-
+    // computed
+    
     const app = Vue.createApp({
-      // directives,
-      data() {
-        return {
-          show: false,
-          distance: 110
+      setup(props, context) {
+        const { reactive, computed } = Vue;
+        const countObj = reactive({
+          count: 0
+        })
+        const handleCount = () => {
+          countObj.count += 1
         }
-      },
-      methods: {
-        handleBtnClick() {
-          this.show = !this.show
+        // const countAddFive = computed(() => {
+        //   return count.value + 5;
+        // })
+        const countAddFive = computed({
+          get() {
+            return countObj.count + 5;
+          },
+          set(param) {
+            countObj.count = param - 5 
+          }
+        })
+        setTimeout(() => {
+          countAddFive.value = 100
+        }, 3000)
+        return {
+          countObj,
+          countAddFive,
+          handleCount
         }
       },
       template: `
-        <div>
-          <div class="area">
-            <button @click="handleBtnClick">按钮</button>
-            <teleport to="#hello">
-              <div class="mask" v-show="show"></div>
-            </teleport>
-          </div>
+        <div @click="handleCount">
+          {{countObj.count}} --- {{countAddFive}}
         </div>
       `
     })
+    
+    
     const vm = app.mount('#root')
   </script>
 </body>

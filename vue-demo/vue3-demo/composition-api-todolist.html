@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // context
+    // 关于list 操作的内容进行封装
+    const listRelativeEffect = () => {
+      const { reactive } = Vue;
+      const list = reactive([]);
+      const addItemTolist = (item) => {
+        list.push(item);
+      }
+      return {
+        list,
+        addItemTolist
+      }
+    }
+    // 关于 input 操作的内容进行封装
+    const inputRelativeEffect = () => {
+      const { ref } = Vue;
+      const inputValue = ref('');
+      const changeInputValue = (e) => {
+        inputValue.value = e.target.value;
+      }
+      return {
+        inputValue,
+        changeInputValue
+      }
+    }
+    const app = Vue.createApp({
+      setup(props, context) {
+        // 流程调度
+        const { list, addItemTolist } = listRelativeEffect();
+        const { inputValue, changeInputValue } = inputRelativeEffect();
+        
+        return {
+          list, addItemTolist,
+          inputValue, changeInputValue
+        }
+      },
+      template: `
+        <div>
+          <input :value="inputValue" @input="changeInputValue" />
+          <button @click="() => addItemTolist(inputValue)">add</button>
+        </div>
+        <ul>
+          <li v-for="(item, index) in list" :key="index">{{item}}</li>
+        </ul>
+      `
+    })
+    
+    
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>

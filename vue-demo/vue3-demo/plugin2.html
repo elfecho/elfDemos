@@ -32,32 +32,47 @@
   <div id="root"></div>
   <div id="hello"></div>
   <script>
-    // teleport 传送门
-
+    // 对数据校验的插件
+    const validatorPlugin = (app, options) => {
+      app.mixin({
+        created() {
+          console.log('created', this.$options.rules)
+          for (let key in this.$options.rules) {
+            const item = this.$options.rules[key]
+            this.$watch(key, (value) => {
+              const result = item.validate(value)
+              if (!result) console.log(item.message)
+            })
+          }
+        },
+      })
+    }
+    
     const app = Vue.createApp({
-      // directives,
-      data() {
+      data () {
         return {
-          show: false,
-          distance: 110
+          name: 'jun',
+          age: 24
         }
       },
-      methods: {
-        handleBtnClick() {
-          this.show = !this.show
+      rules: {
+        age: {
+          validate: age => age > 25,
+          message: 'too young, to simple'
+        },
+        name: {
+          validate: name => name.length > 4,
+          message: 'name too short'
         }
       },
       template: `
-        <div>
-          <div class="area">
-            <button @click="handleBtnClick">按钮</button>
-            <teleport to="#hello">
-              <div class="mask" v-show="show"></div>
-            </teleport>
-          </div>
-        </div>
+        name: {{name}},
+        age: {{age}}
       `
     })
+
+    app.use(validatorPlugin)
+    
     const vm = app.mount('#root')
   </script>
 </body>

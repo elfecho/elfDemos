@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue3.0 demo</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // setup
+    
+    const app = Vue.createApp({
+      template: `
+        <my-title :name="name"></my-title>
+        <div @click="handleClick">name: {{name}}</div>
+      `,
+      // setup 函数会在 beforeCreate 之后、created实例 之前执行
+      setup(props, context) {
+        console.log(this); // window
+        return {
+          name: 'elfecho',
+          handleClick() {
+            console.log(123)
+          }
+        }
+      }
+    })
+    app.component('my-title', {
+      props: {
+        name: {
+          type: String,
+          required: true
+        }
+      },
+      setup(props, context) {
+        console.log('props:::', props)
+        console.log(context.attrs)
+      },
+      template: `
+        {{name}}
+      `
+    })
+    
+    const vm = app.mount('#root')
+  </script>
+</body>
+</html>
