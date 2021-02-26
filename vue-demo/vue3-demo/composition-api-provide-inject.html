@@ -13,41 +13,35 @@
     // provide inject
     const app = Vue.createApp({
       setup(props, context) {
-        const { ref, onMounted } = Vue;
-        const hello = ref(null) // 这个hello与下面template的ref的hello对应
-        const child = ref(null)
-        onMounted(() => {
-          console.log(hello.value)
-          child.value.childClick()
+        const { ref, provide, readonly } = Vue;
+        const name = ref('elf')
+        provide('name', readonly(name)) // 加readonly 防止子组件修改父组件的值，违反了单向数据流的要求
+        provide('handleClick', () => {
+          name.value = 'echo'
         })
-        return {
-          hello,
-          child
-        }
+
+        return {}
       },
       template: `
-        <div>
-          <div ref="hello">hello world</div>
-          <child ref="child" />
-        </div>
+        <child />
       `
     })
 
     app.component('child', {
-      setup(props) {
-        function childClick() {
-          console.log('this is child')
-        }
+      setup() {
+        const { inject } = Vue;
+        const name = inject('name')
+        const handleClick = inject('handleClick')
+
         return {
-          childClick
+          name,
+          handleClick
         }
       },
       template: `
-        <div>child</div>
+        <div @click="handleClick">{{name}}</div>
       `
     })
-
-    
     
     
     const vm = app.mount('#root')
