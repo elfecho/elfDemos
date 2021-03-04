@@ -10,21 +10,30 @@
         :item="item" 
         :index="index"
         @handleDelete="deletes"
+        ref="listItem"
+        class="item bar baz"
       ></list-item>
     </ul>
-    
+    <button @click="getItem">获取Item</button>
+    <bar />
   </div>
 </template>
 
 <script setup>
   import NavBar from '@/components/NavBar.vue'
   import ListItem from '@/components/ListItem.vue'  
-
+  import Bar from './Bar.vue'
   import { reactive, ref } from 'vue'
-  
 
   const inputValue = ref('')
   const list = reactive(['hello'])
+  const listItem = ref(null)
+  
+  // 之前会把 setup 返回的对象挂载到 组件的实例上
+  // 而现在是给关闭了
+  const getItem = () => {
+    console.log(listItem.value.getName(), listItem.value.count)
+  }
   const handleClick = (item) => {
     list.push(String(item))
     inputValue.value = ''
@@ -33,6 +42,19 @@
     console.log(index)
     list.splice(index, 1)
   }
+
+  // 验证顶层await
+  // function getTime () {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(1)
+  //     }, 0)
+  //   })
+  // }
+  // 调用时出现bug
+  // const time = await getTime()
+  // console.log(time)
+
   
 
 </script>
