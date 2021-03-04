@@ -5,8 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
-  },
-  "dependencies": {
+    "test:unit": "jest"
     "normalize.css": "^8.0.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.4",
