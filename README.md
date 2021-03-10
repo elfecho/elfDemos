@@ -16,4 +16,4 @@
 - `webpack-test` webpack搭建工程的应用
 - `wx-demo` 学习微信小程序的一些小练习
 - `typescript-demos` 学习typescript的练习
-- `jest-demos` 学习jest单元测试工具
+- `jest-demos` 学习jest测试工具
