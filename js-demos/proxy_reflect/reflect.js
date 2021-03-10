@@ -66,30 +66,30 @@ const has = Reflect.has(exam, 'name')
 // Reflect.deleteProperty(obj, property)
 // 是 delete obj[property] 的函数化，用于删除 obj 对象的 property 属性，返回值为 boolean。如果 obj 不是对象则会报错 TypeError。
 
-const deletePro = Reflect.deleteProperty(exam , 'name'); // true
+const deletePro = Reflect.deleteProperty(exam, 'name'); // true
 // exam // {age: 24} 
 // property 不存在时，也会返回 true
-const deletePro2 = Reflect.deleteProperty(exam , 'name'); // true
+const deletePro2 = Reflect.deleteProperty(exam, 'name'); // true
 
 // Reflect.construct(obj, args) 等同于 new target(…args)。
 
-function examFn(name){
-    this.name = name;
+function examFn(name) {
+  this.name = name;
 }
-Reflect.construct(examFn, ['Tom']); // exam {name: "Tom"}
-
+const newConstruct = Reflect.construct(examFn, ['Tom']); // examFn {name: "Tom"}
+const newName = newConstruct.name
 
 // Reflect.getPrototypeOf(obj)
 // 用于读取 obj 的 _proto_ 属性。在 obj 不是对象时不会像 Object 一样把 obj 转为对象，而是会报错。
 
-class ExamClass{}
+class ExamClass { }
 let obj = new ExamClass()
 const proto = Reflect.getPrototypeOf(obj) === ExamClass.prototype // true
 
 // Reflect.setPrototypeOf(obj, newProto)
 // 用于设置目标对象的 prototype。
 
-let obj2 ={}
+let obj2 = {}
 Reflect.setPrototypeOf(obj2, Array.prototype); // true
 obj2.push(1);
 
@@ -102,13 +102,64 @@ const max2 = Function.prototype.apply.call(Math.max, Math, [1, 3, 5, 3, 1]);
 // Reflect.defineProperty(target, propertyKey, attributes)
 // 用于为目标对象定义属性。如果 target 不是对象，会抛出错误。
 
-let myDate= {}
+let myDate = {}
 Reflect.defineProperty(myDate, 'now', {
   value: () => Date.now()
 }); // true
- 
+
 const student = {};
-Reflect.defineProperty(student, "name", {value: "Mike"}); // true
+Reflect.defineProperty(student, "name", { value: "Mike" }); // true
 // student.name; // "Mike"
+
+// Reflect.apply(func, thisArg, args)
+// 等同于 Function.prototype.apply.call(func, thisArg, args) 。func 表示目标函数；thisArg 表示目标函数绑定的 this 对象；args 表示目标函数调用时传入的参数列表，可以是数组或类似数组的对象。若目标函数无法调用，会抛出 TypeError 。
+
+const maxApply = Reflect.apply(Math.max, Math, [1, 3, 5, 3, 8]); // 8
+
+// Reflect.defineProperty(target, propertyKey, attributes)
+// 用于为目标对象定义属性。如果 target 不是对象，会抛出错误。
+
+let myDate1 = {}
+Reflect.defineProperty(myDate1, 'now', {
+  value: () => Date.now()
+}); // true
+
+const student1 = {};
+Reflect.defineProperty(student1, "name", { value: "Mike" }); // true
+const studentName = student1.name; // "Mike"
+
+
+let myDate2 = {}
+Reflect.defineProperty(myDate2, 'name', {
+  value: 'kk',
+  enumerator: false
+})
+
+const myDate2Own = Reflect.getOwnPropertyDescriptor(myDate2, 'name') // { value: "kk", writable: false, enumerable: false, configurable: false, }
+
+// propertyKey 属性在 target 对象中不存在时，返回 undefined
+const myDate2age = Reflect.getOwnPropertyDescriptor(myDate2, 'age') // undefined
+
+// Reflect.isExtensible(target)
+// 用于判断 target 对象是否可扩展。返回值为 boolean 。如果 target 参数不是对象，会抛出错误。
+
+const isExtensible = Reflect.isExtensible(myDate2) // true
+
+// Reflect.preventExtensions(target)
+// 用于让 target 对象变为不可扩展。如果 target 参数不是对象，会抛出错误。
+
+let myDate3 = {}
+const preventExtensions = Reflect.preventExtensions(myDate3) // true
+const myDate3pro = Reflect.isExtensible(myDate3) // false
+
+
+// Reflect.ownKeys(target)
+// 用于返回 target 对象的所有属性，等同于 Object.getOwnPropertyNames 与Object.getOwnPropertySymbols 之和。
+
+var exam3 = {
+  name: 1,
+  [Symbol.for('age')]: 4
+}
+const exam3keys = Reflect.ownKeys(exam3) // ["name", Symbol(age)]
 
 //
