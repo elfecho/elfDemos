@@ -23,11 +23,12 @@
   import NavBar from '@/components/NavBar.vue'
   import ListItem from '@/components/ListItem.vue'  
   import Bar from './Bar.vue'
-  import { reactive, ref } from 'vue'
+  import { reactive, ref, watchEffect } from 'vue'
 
   const inputValue = ref('')
   const list = reactive(['hello'])
   const listItem = ref(null)
+  let a = ref(1)
   
   // 之前会把 setup 返回的对象挂载到 组件的实例上
   // 而现在是给关闭了
@@ -42,6 +43,14 @@
     console.log(index)
     list.splice(index, 1)
   }
+
+  const shopTimer = setInterval(() => {
+    a.value++
+  }, 2000)
+
+  watchEffect(() => {
+    console.log('list', list)
+  })
 
   // 验证顶层await
   // function getTime () {

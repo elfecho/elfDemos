@@ -13,7 +13,7 @@ const props = defineProps({
 const emit = defineEmit(['handleDelete'])
 
 const ctx = useContext()
-console.log('ctx:::', ctx)
+console.log('ctx:::', ctx, ctx.props)
 
 // 导出给组件实例【作用：保证当前组件的封装性】
 ctx.expose({
