@@ -1,54 +1,53 @@
-import { createApp, defineComponent, h, reactive, ref, watchEffect } from 'vue'
-import HelloWorld from './components/HelloWorld'
-const logo = require('./assets/logo.png') // eslint-disable-line
+import { defineComponent, Ref, ref } from 'vue'
 
-function renderHelloWorld(num: number) {
-  return <HelloWorld age={num} />
+import MonacoEditor from './components/MonacoEditor'
+
+import { createUseStyles } from 'vue-jss'
+
+const useStyles = createUseStyles({
+  codePanel: {
+    minHeight: 400,
+    marginBottom: 20,
+  },
+})
+
+function toJson(data: any) {
+  return JSON.stringify(data, null, 2)
+}
+
+const schema = {
+  type: 'string',
 }
 
 export default defineComponent({
   setup() {
-    const state = reactive({
-      name: 'Tom',
-    })
-    const numberRef = ref(1)
+    const schemaRef: Ref<any> = ref(schema)
 
-    // setInterval(() => {
-    //   state.name += '1'
-    //   numberRef.value += 1
-    // }, 1000)
+    const handleCodeChange = (code: string) => {
+      let schema: any
+      try {
+        schema = JSON.parse(code)
+      } catch (err) {
+        schemaRef.value = schema
+      }
+    }
 
-    watchEffect(() => {
-      console.log(state.name)
-    })
+    const classesRef = useStyles()
+
+    const classes = classesRef.value
 
     return () => {
-      const number = numberRef.value
+      const code = toJson(schemaRef.value)
       return (
         <div id="app">
-          <img src={logo} alt="Vue logo" />
-          <p>{state.name + number}</p>
-          <input type="text" v-model={state.name} />
-          {renderHelloWorld(12)}
+          <MonacoEditor
+            code={code}
+            onChange={handleCodeChange}
+            title="Schema"
+            class={classes.codePanel}
+          />
         </div>
       )
     }
-
-    // return () => {
-    //   const number = numberRef.value
-    //   return h(
-    //     'div',
-    //     {
-    //       id: 'app',
-    //     },
-    //     [
-    //       h('img', {
-    //         alt: 'Vue logo',
-    //         src: logo,
-    //       }),
-    //       h('p', state.name + number),
-    //     ],
-    //   )
-    // }
   },
 })
