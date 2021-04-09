@@ -12,6 +12,10 @@ export default {
     return {
     }
   },
+  mounted() {
+    
+    
+  },  
   methods: {
     onback() {
       this.$router.back()

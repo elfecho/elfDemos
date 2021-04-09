@@ -38,6 +38,11 @@ export default new Router({
       path: '/trees',
       name: 'trees',
       component: () => import('./../pages/tree/trees')
-    }
+    },
+    {
+      path: '/fun',
+      name: 'fun',
+      component: () => import('./../pages/fun')
+    },
   ]
 })
