@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookies</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .from-item {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="from-item">
+    <label for="keyValue">cookie key值</label>
+    <input type="text" id="keyValue" />
+  </div>
+  <div class="from-item">
+    <label for="inputValue">cookie value值</label>
+    <input type="text" id="inputValue" />
+  </div>
+  <br/>
+  <button class="set">设置</button>
+  <button class="get">获取cookie</button>
+  <br/ >
+  当前cookie的值：(点击下面列，即可删除对应cookie) 【每5秒自动刷新】
+  <ul id="cookieList"></ul>
+  <script src="./fun.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
