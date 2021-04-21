@@ -2,8 +2,7 @@ import { defineComponent } from 'vue'
 
 import ASlotDemo from '@/components/slot/ASlotDemo'
 import AEmitsDemo from '@/components/emits/AEmitsDemo'
-
-import styles from './style.module.scss'
+import Tab from '@/components/Tab'
 
 interface IFooterSlotData {
   text: string
@@ -21,10 +20,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div class={styles.nav}>
-          <routerLink to="/"> Home</routerLink>
-          <routerLink to="/about">About </routerLink>
-        </div>
+        <Tab />
         <div>about</div>
 
         <AEmitsDemo onClick={click} onGetData={getData} />

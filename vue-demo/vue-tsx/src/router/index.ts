@@ -18,6 +18,15 @@ const routes: Array<RouteRecordRaw> = [
     },
     component: () => import('../views/About'),
   },
+  {
+    path: '/hook',
+    name: 'Hook',
+    meta: {
+      title: 'hook使用',
+      keepAlive: true,
+    },
+    component: () => import('../views/Hook'),
+  },
 ]
 export const router = createRouter({
   history: createWebHashHistory(),

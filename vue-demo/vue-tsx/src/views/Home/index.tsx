@@ -1,6 +1,8 @@
 import { computed, defineComponent, provide, reactive, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import Foo from '@/components/Foo'
+import Tab from '@/components/Tab'
+
 import { useStore } from 'vuex'
 
 import styles from './style.module.scss'
@@ -37,14 +39,11 @@ export default defineComponent({
       const count = store.state.count
       return (
         <>
-          <div class={styles.nav}>
-            <routerLink to="/"> Home</routerLink>
-            <routerLink to="/about">About </routerLink>
-          </div>
-          <div>
+          <Tab />
+          <>
             home vuex count : {count}
             <button onClick={handleClick}>click</button>
-          </div>
+          </>
           <label for="ab">请输入 </label>
           <input type="text" v-model={state.inputValue} />
           <button onClick={addItem}>添加</button>
