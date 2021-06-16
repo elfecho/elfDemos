@@ -27,5 +27,17 @@ function get(obj, ...seletors) {
   console.log(r)
 }
 
+function get1(obj, str) {
+  const r = str
+  .replace(/\[(\w+)\]/g, ".$1")
+  .split('.')
+  .reduce((prev, cur) => {
+    return prev && prev[cur]
+  }, obj)
+  console.log(r)
+}
+
+get1(obj, 'a');
+
 get(obj, 'selector.to.val', 'target[0]', 'target[2].a');
 
