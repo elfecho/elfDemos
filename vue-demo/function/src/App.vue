@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Tab></Tab>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    
   </div>
 </template>
 
@@ -10,6 +13,11 @@ import Tab from "./components/Tab.vue";
 // import Time from './components/Time'
 export default {
   name: "App",
+  data() {
+    return {
+      aliveList: ['fun']
+    }
+  },
   components: {
     // HelloWorld,
     Tab,

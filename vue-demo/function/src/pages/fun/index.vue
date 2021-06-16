@@ -10,10 +10,14 @@
 <script>
 import { debounce, throttle } from "@/utils/common";
 export default {
+  name: 'fun',
   data() {
     return {
       count: 0,
     };
+  },
+  mounted() {
+    console.log('mounted')
   },
   methods: {
     handleClick: debounce(function() {
