@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {
+      width: 300px;
+      height: 300px;
+      background-color: orange;
+      position: relative;
+    }
+    .child {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 250px;
+      left: 50px;
+      z-index: 77;
+      background-color: orchid;
+    }
+    .box2 {
+      width: 300px;
+      height: 300px;
+      background-color: orangered;
+      position: relative;
+      z-index: 33;
+      transform: translate(0px, 0px); transition: all 0ms ease-in 0s;
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">
+    box1
+    <ul>
+      <li class="child" onclick="aa()">child</li>
+    </ul>
+    
+  </div>
+  <div class="box2">
+    box1
+    <ul>
+      <li class="child" onclick="aa()">child</li>
+    </ul>
+  </div>
+  <script>
+    function aa() {
+      console.log(111)
+    }
+  </script>
+</body>
+</html>

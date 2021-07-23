@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Tab></Tab>
+    <!-- <Tab></Tab> -->
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Tab from "./components/Tab.vue";
+// import Tab from "./components/Tab.vue";
 // import Time from './components/Time'
 export default {
   name: "App",
@@ -20,7 +20,7 @@ export default {
   },
   components: {
     // HelloWorld,
-    Tab,
+    // Tab,
   },
 };
 </script>

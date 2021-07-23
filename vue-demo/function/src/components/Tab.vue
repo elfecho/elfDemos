@@ -11,6 +11,7 @@
         {{ item.label }}
       </router-link>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -35,6 +36,10 @@ export default {
         {
           label: "fun",
           url: "/fun",
+        },
+        {
+          label: "marqueeText",
+          url: "/marqueeText",
         },
       ],
     };

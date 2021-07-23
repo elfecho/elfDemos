@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>一个页面中有多个音频audio标签，怎样在点击其中一个播放时，其他的停止播放</title>
+</head>
+
+<body>
+    <audio src="http://m8.music.126.net/20210617102335/527baf4f3c91ab8b1ceb8a05b9d8b6b8/ymusic/020c/5652/075e/5fcded78c7a8df3f91e404ddbdaf226b.mp3" controls id="audio1"></audio>
+    <audio src="http://www.ytmp3.cn/down/49382.mp3" controls></audio>
+    <audio src="http://www.ytmp3.cn/down/49369.mp3" controls></audio>
+    <button onclick="handleAudio()">播放音频1</button>
+    <script type="text/javascript">
+    // 获取所有audios
+    var audios = document.getElementsByTagName("audio");
+    var audio1 = document.getElementById('audio1')
+    // 暂停函数
+    function pauseAll() {
+        var self = this;
+        [].forEach.call(audios, function(i) {
+            // 将audios中其他的audio全部暂停
+            i !== self && i.pause();
+        })
+    }
+    // 给play事件绑定暂停函数
+    [].forEach.call(audios, function(i) {
+        i.addEventListener("play", pauseAll.bind(i));
+    })
+    function handleAudio() {
+      console.log(audios)
+      audios[0].play()
+    }
+    </script>
+</body>
+
+</html>
