@@ -6,6 +6,12 @@ import global from './utils/global.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
+import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
+ 
+import VueVirtualScroller from "vue-virtual-scroller";
+ 
+Vue.use(VueVirtualScroller);
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false

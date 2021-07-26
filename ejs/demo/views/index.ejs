@@ -1,0 +1,31 @@
+<body>
+  <h2>ejs循环数据---<%=userinfo%></h2>
+
+  <p><%=title%></p>
+  <ul>
+    <%for(var i=0;i<list.length;i++){%>
+      <li>
+        <%=list[i]%>
+      </li>
+      <%}%>
+  </ul>
+
+  <h2>绑定html数据</h2>
+
+  <!--渲染结果：<h2>这是一个h2</h2>-->
+  <%=content%>
+
+  <!--渲染结果：这是一个h2-->
+  <%-content%>
+
+  <h2>条件判断</h2>
+  <br />
+  <%if(num>24){%>
+
+    大于24
+    <%}else{%>
+
+      小于24
+
+      <%}%>
+</body>
