@@ -1,6 +1,6 @@
 <template>
   <div>
-    <virtalList :size="20" :remain="8" :items="items" :varlable="true">
+    <virtalList :size="20" :remain="20" :items="items" :varlable="true">
       <!-- 获得scope的数据 -->
       <itemL slot-scope="{ item }" :item="item"></itemL>
     </virtalList>
@@ -9,7 +9,7 @@
 
 <script>
 import Mock from "mockjs";
-import virtalList from '@/components/virtalList'
+import virtalList from '@/components/virtalListDemo'
 import itemL from './itemL'
 export default {
   data() {
@@ -23,9 +23,9 @@ export default {
   },
   created() {
     let items = [];
-    for (var i = 0; i < 500; i++) {
+    for (var i = 0; i < 50000; i++) {
       //使用mock.js进行生成数据
-      items.push({ id: i, value: Mock.Random.sentence(2) });
+      items.push({ id: i, value: i + Mock.Random.sentence(2) });
     }
     this.items = items
     console.log(items)

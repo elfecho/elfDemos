@@ -47,8 +47,6 @@ export default {
     },
   },
   mounted() {
-    
-
     this.move();
   },
   methods: {
@@ -60,8 +58,10 @@ export default {
       } else {
         this.isShow = true;
         /* 跑马灯速度，使用跑马灯内容宽度 除以 速度 得到完整跑完一半内容的时间 */
-        this.duration =
-          this.$refs.marquee.getBoundingClientRect().width / this.speed + "s";
+        if (this.$refs.marquee.getBoundingClientRect().width) {
+          this.duration =
+            this.$refs.marquee.getBoundingClientRect().width / this.speed + "s";
+        }
         this.$refs.marquee.style.webkitAnimationPlayState = "running";
       }
     },
