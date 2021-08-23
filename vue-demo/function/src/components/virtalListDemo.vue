@@ -6,11 +6,15 @@
       <!-- 滚动条 -->
       <!-- <div class="scroll-bar" ref="scrollbar"></div> -->
       <!-- 列表位置 -->
+      
+        <!-- :style="{ transform: `translate3d(0,${offset}px,0)` }" -->
       <div
         class="scroll-list"
-        :style="{ transform: `translate3d(0,${offset}px,0)` }"
+        ref="scrollList"
       >
-        <div id="topLoading"></div>
+        <div class="blank" :style="{ height: `${offset}px` }"></div>
+
+        <div id="topLoading" ref="topLoading"></div>
         <div
           v-for="item in visibleData"
           ref="items"
@@ -65,14 +69,16 @@ export default {
       console.log("entries", entries, entries[0].target.id === "topLoading");
       if (entries[0].isIntersecting) {
         if (entries[0].target.id === "loading") {
-          console.log("触底了");
+          console.log("触底了", this.start);
+          // if (this)
           this.start = this.start + count; //列表开始的位置应该额等于滚动的位置/列表的高度
           this.end = this.start + this.remain;
           this.offset = this.start * this.size - this.prevCount * this.size;
         }
         if (entries[0].target.id === "topLoading") {
-          console.log("到达顶部");
+          console.log("到达顶部", this.start);
           if (this.start != 0) {
+            this.$refs.topLoading.style.marginTop = '-400px'
             this.offset = this.start * this.size - this.nextCount * this.size;
             this.end = this.start;
             this.start = this.start - count;
@@ -114,5 +120,16 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.blank {
+
+}
+#topLoading {
+  /* margin-bottom: -400px; */
+}
+#loading {
+  /* position: absolute;
+  bottom: 200px; */
+  margin-top: -400px;
 }
 </style>

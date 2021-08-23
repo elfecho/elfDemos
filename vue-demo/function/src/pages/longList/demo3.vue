@@ -1,6 +1,6 @@
 <template>
   <div>
-    <virtalList :size="20" :remain="20" :items="items" :varlable="true">
+    <virtalList :size="20" :remain="60" :items="items" :varlable="true">
       <!-- 获得scope的数据 -->
       <itemL slot-scope="{ item }" :item="item"></itemL>
     </virtalList>

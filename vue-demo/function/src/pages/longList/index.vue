@@ -2,7 +2,7 @@
   <div>
     <virtalList :size="20" :remain="8" :items="items" :varlable="true">
       <!-- 获得scope的数据 -->
-      <itemL slot-scope="{ item }" :item="item"></itemL>
+      <itemL slot-scope="{ item, index }" :item="item" :index="index"></itemL>
     </virtalList>
   </div>
 </template>

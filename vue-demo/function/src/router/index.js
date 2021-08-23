@@ -76,5 +76,10 @@ export default new Router({
       name: 'longListDemo3',
       component: () => import('./../pages/longList/demo3.vue')
     },
+    {
+      path: '/list',
+      name: 'List',
+      component: () => import('./../pages/List/index.vue')
+    },
   ]
 })

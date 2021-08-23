@@ -10,13 +10,13 @@
         :style="{ transform: `translate3d(0,${offset}px,0)` }"
       >
         <div
-          v-for="item in visibleData"
+          v-for="(item, index) in visibleData"
           ref="items"
           :key="item.id"
           :vid="item.id"
         >
           <!-- 通过插槽传出去 -->
-          <slot :item="item"></slot>
+          <slot :item="item" :index="index"></slot>
         </div>
       </div>
     </div>
