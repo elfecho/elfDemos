@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "getmac": "^1.2.1",
-    "node-getmac": "^1.0.3"
+    "getmac": "^1.2.1"
   }
 }
