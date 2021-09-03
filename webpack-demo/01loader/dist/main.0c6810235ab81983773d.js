@@ -174,6 +174,17 @@ eval("module.exports = __webpack_require__.p + \"a1f61df510ac3e2b111d3ca0ac8421a
 
 /***/ }),
 
+/***/ "./src/images/abc.jpg":
+/*!****************************!*\
+  !*** ./src/images/abc.jpg ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"images/abc_13aab37e66c111ddf4e6761178f5f25c.jpg\";\n\n//# sourceURL=webpack:///./src/images/abc.jpg?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -182,7 +193,7 @@ eval("module.exports = __webpack_require__.p + \"a1f61df510ac3e2b111d3ca0ac8421a
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\nvar root = document.getElementById('root');\r\n\r\n\r\nroot.innerHTML = '<div class=\"iconfont icon-changjingguanli\"></div>';\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _images_abc_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/abc.jpg */ \"./src/images/abc.jpg\");\n/* harmony import */ var _images_abc_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_abc_jpg__WEBPACK_IMPORTED_MODULE_1__);\nvar root = document.getElementById('root');\r\n\r\n\r\n\r\nroot.innerHTML = `<div><img src=\"${_images_abc_jpg__WEBPACK_IMPORTED_MODULE_1___default.a}\" alt=\"\"></div>`;\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

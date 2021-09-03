@@ -38,6 +38,10 @@ export default {
           url: "/fun",
         },
         {
+          label: "img转base64",
+          url: "/imgBase",
+        },
+        {
           label: "marqueeText",
           url: "/marqueeText",
         },
@@ -45,13 +49,18 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$route);
+    // console.log(this.$route);
   },
   watch: {
-    $route(newRoute, oldRoute) {
-      this.selectPath = newRoute.path;
-      console.log(newRoute, oldRoute);
-    },
+    $route: {
+      handler(newRoute) {
+        this.selectPath = newRoute.path;
+      },
+      immediate: true,
+      deep: true
+    }
+    
+    
   },
 };
 </script>

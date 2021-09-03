@@ -10,6 +10,11 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  provide: {
+    GLOBAL: {
+      logined: false
+    }
+  },
   components: {
     HelloWorld
   }

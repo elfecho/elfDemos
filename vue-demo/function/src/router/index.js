@@ -21,7 +21,7 @@ export default new Router({
           path: '/about',
           name: 'About',
           // component: (resolve) => require(['@/pages/about'], resolve)
-          component: () => import('./../pages/about')
+          component: () => import('./../pages/about/index')
         },
         {
           path: '/about/detail',
@@ -47,6 +47,11 @@ export default new Router({
           path: '/fun',
           name: 'fun',
           component: () => import('./../pages/fun')
+        },
+        {
+          path: '/imgBase',
+          name: 'ImgBase',
+          component: () => import('./../pages/imgBase')
         },
         {
           path: '/marquee',

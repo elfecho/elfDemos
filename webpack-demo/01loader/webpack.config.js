@@ -17,7 +17,7 @@ module.exports = {
           // placeholder 占位符
           name: '[name]_[hash].[ext]',
           outputPath: 'images/',
-          limit: 10240
+          limit: 102
         }
       }]
     }, {
