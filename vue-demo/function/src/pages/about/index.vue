@@ -1,7 +1,7 @@
 <template>
   <div>
     关于
-    <About :username="username" :age="age" />
+    <about-component :username="username" :age="age"></about-component>
     <button @click="readDetail">查看详情</button>
     <div v-my-click="{color: 'red'}">我是自定义指令</div>
     <img v-imgUrl="url" class="img" alt="">
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import About from '@/components/about/About'
+import AboutComponent from '@/components/About'
 export default {
   name: 'About',
   data() {
@@ -21,7 +21,7 @@ export default {
     }
   },
   components: {
-    About
+    AboutComponent
   },
   // bind()：当指令绑定在 HTML 元素上时触发
   // inserted()：当指令绑定的元素插入到父节点中的时候触发

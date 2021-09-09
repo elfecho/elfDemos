@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "echarts": "^5.2.0",
+    "element-resize-detector": "^1.2.3",
     "element-ui": "^2.15.0",
     "jiff": "^0.7.3",
     "less-loader": "^10.0.1",
@@ -16,6 +18,8 @@
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",
     "vue-count-to": "^1.0.13",
+    "vue-echart": "^1.0.5",
+    "vue-i18n": "^8.25.0",
     "vue-list": "^1.0.3",
     "vue-marquee-text-component": "^1.2.0",
     "vue-router": "^3.4.9",

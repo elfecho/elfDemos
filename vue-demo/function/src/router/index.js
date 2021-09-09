@@ -20,8 +20,7 @@ export default new Router({
         {
           path: '/about',
           name: 'About',
-          // component: (resolve) => require(['@/pages/about'], resolve)
-          component: () => import('./../pages/about/index')
+          component: () => import('./../pages/about/index.vue')
         },
         {
           path: '/about/detail',
@@ -57,6 +56,16 @@ export default new Router({
           path: '/marquee',
           name: 'marquee',
           component: () => import('./../pages/marquee')
+        },
+        {
+          path: '/languagePage',
+          name: 'languagePage',
+          component: () => import('./../pages/languagePage')
+        },
+        {
+          path: '/echarts',
+          name: 'echarts',
+          component: () => import('./../pages/echarts')
         },
       ]
     },

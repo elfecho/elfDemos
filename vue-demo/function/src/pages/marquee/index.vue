@@ -23,7 +23,7 @@ export default {
 <style scoped>
 .marquee {
   width: 544px;
-  padding-left: 100p;
+  padding-left: 100px;
   padding-right: 30px;
   line-height: 50px;
   margin: 0 auto 28px;

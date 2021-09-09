@@ -42,8 +42,16 @@ export default {
           url: "/imgBase",
         },
         {
-          label: "marqueeText",
-          url: "/marqueeText",
+          label: "marquee",
+          url: "/marquee",
+        },
+        {
+          label: "language",
+          url: "/languagePage",
+        },
+        {
+          label: "echarts",
+          url: "/echarts",
         },
       ],
     };
@@ -67,9 +75,8 @@ export default {
 
 <style scoped>
 .list {
-  height: 40px;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
 }
 .list .item {
@@ -77,6 +84,7 @@ export default {
   line-height: 40px;
   background: #d5d5d5;
   margin-right: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 .list .item.select {
