@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>箭头arrow</title>
+</head>
+
+<body>
+  <span id="demo16">文字内容</span>
+  <ul id="demo17">
+    <li>文字内容 Tab1</li>
+    <li>文字内容 Tab2</li>
+    <li>文字内容 Tab3</li>
+  </ul>
+
+  <h4 class="arrow1">上箭头</h4>
+  <h4 class="arrow2">下箭头</h4>
+  <h5 class="triangle1">左实心三角</h5>
+  <h5 class="triangle2">右实心三角</h5>
+
+  <style>
+    #demo16 {
+      position: relative;
+    }
+
+    #demo16:after,
+    #demo16:before {
+      border: 10px solid transparent;
+      border-left: 10px solid #fff;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      right: -20px;
+      content: ' '
+    }
+
+    #demo16:before {
+      border-left-color: #f00;
+      right: -25px;
+    }
+
+    #demo17 {
+      font-size: 10px;
+      /* height: 24px; */
+    }
+
+    #demo17 li {
+      /* float: left; */
+      position: relative;
+      list-style: none;
+      margin: 0 20px 12px -19px;
+      border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd;
+      padding-left: 12px;
+    }
+
+    #demo17 li:after,
+    #demo17 li:before {
+      border: 10px solid transparent;
+      border-left: 10px solid #fff;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      right: -18px;
+      content: ' '
+    }
+
+    #demo17 li:before {
+      border-left-color: #ddd;
+      right: -19px;
+    }
+  </style>
+
+  <style>
+    @charset "utf-8";
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      padding: 50px;
+    }
+
+    h4 {
+      width: 108px;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .arrow1:before {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-top: -2px;
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      /* -webkit-transform: rotate(225deg); */
+      -webkit-transform: rotate(-45deg);
+      content: '';
+    }
+
+    .arrow2:before {
+      position: absolute;
+      right: 20px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      content: '';
+    }
+
+    .triangle1 {
+      display: block;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      margin: 20px auto;
+      line-height: 0;
+      font-size: 0;
+      vertical-align: middle;
+      border-right: 10px solid red;
+      border-left: 0 none;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      _color: #FF3FFF;
+      _filter: chroma(color=#FF3FFF);
+    }
+
+    .triangle2 {
+      display: block;
+      margin: 20px auto;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      line-height: 0;
+      font-size: 0;
+      vertical-align: middle;
+      border-left: 10px solid red;
+      border-right: 0 none;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      _color: #FF3FFF;
+      _filter: chroma(color=#FF3FFF);
+    }
+  </style>
+</body>
+
+</html>

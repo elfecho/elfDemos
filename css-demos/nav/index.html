@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link href="./styles/style.css" rel="stylesheet" type="text/css" />
+  <link href="./styles/main.css" rel="stylesheet" type="text/css" />
+  <title>手机移动端导航菜单特效动画代码</title>
+  <meta name="keywords" content="手机,移动端,导航菜单,特效动画代码" />
+  <meta name="description" content="手机移动端导航菜单特效动画代码下载，总用有15种菜单弹出方式，非常炫酷大气。" />
+  <meta name="author" content="js代码(www.jsdaima.com)" />
+  <meta name="copyright" content="js代码(www.jsdaima.com)" />
+  <style>
+    body {
+      font-family: "microsoft yahei";
+    }
+  </style>
+
+  <style>
+    .mobile-inner-nav a {
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: returnToNormal;
+      animation-name: returnToNormal;
+    }
+
+
+    @-webkit-keyframes returnToNormal {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+
+      to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    @keyframes returnToNormal {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+
+      to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+  </style>
+  <!-- <script type="text/javascript" src="./js/jquery-2.2.0.min.js"></script> -->
+  <script>
+    $(window).load(function () {
+
+
+
+      $(".mobile-inner-header-icon").click(function () {
+        $(this).toggleClass("mobile-inner-header-icon-click mobile-inner-header-icon-out");
+        $(".mobile-inner-nav").slideToggle(250);
+
+      });
+
+
+
+
+      $(".mobile-inner-nav a").each(function (index) {
+        $(this).css({ 'animation-delay': (index / 10) + 's' });
+      });
+
+
+
+
+
+    });
+  </script>
+
+
+</head>
+
+<body>
+
+
+
+
+
+  <div class="wrapper">
+    <div class="wrapper-inner">
+
+      <div class="wrapper-inner-buttons">
+        <a href="index.html">Example 1</a>
+        <a href="example2.html">Example 2</a>
+        <a href="example3.html">Example 3</a>
+        <a href="example4.html">Example 4</a>
+        <a href="example5.html">Example 5</a>
+        <a href="example6.html">Example 6</a>
+        <a href="example7.html">Example 7</a>
+        <a href="example8.html">Example 8</a>
+        <a href="example9.html">Example 9</a>
+        <a href="example10.html">Example 10</a>
+        <a href="example11.html">Example 11</a>
+        <a href="example12.html">Example 12</a>
+        <a href="example13.html">Example 13</a>
+        <a href="example14.html">Example 14</a>
+        <a href="example15.html">Example 15</a>
+      </div>
+
+      <div class="mobile">
+        <div class="mobile-inner">
+          <div class="mobile-inner-header">
+            <div class="mobile-inner-header-icon mobile-inner-header-icon-out"><span></span><span></span></div>
+          </div>
+          <div class="mobile-inner-nav">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </div>
+          <!-- <img src="https://www.jsdaima.com/Uploads/js/201804/1523006380/_assets/photo1.jpg"/> -->
+          <p>
+            js代码（www.jsdaima.com）是IT资源下载及IT技能学习平台。js代码提供了丰富全面的js特效代码、jQuery插件等各种网页特效，为您提供HTML5手机网站模板、响应式网站模板、电脑网站模板等各类型各行业网站模板下载，制作开发了网络设计、商城网站、企业网站、教育培训、新闻博客等各行业网站整站源码，收集整理了HTML5前端开发、Python基础教程、APP移动端开发、PHP开发、Java开发、大数据、人工智能等领域视频教程，充分满足IT用户对不同类型资源的需求。js代码拒绝滥竽充数，我们只提供精品资源！
+          </p>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</body>
+
+</html>
