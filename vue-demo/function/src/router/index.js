@@ -67,9 +67,18 @@ export default new Router({
           name: 'echarts',
           component: () => import('./../pages/echarts')
         },
+        {
+          path: '/assembly',
+          name: 'assembly',
+          component: () => import('./../pages/assembly')
+        },
       ]
     },
-    
+    {
+      path: '/swiper',
+      name: 'swiper',
+      component: () => import('./../pages/swiper')
+    },
     {
       path: '/longList',
       name: 'longList',

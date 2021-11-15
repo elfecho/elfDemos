@@ -53,6 +53,10 @@ export default {
           label: "echarts",
           url: "/echarts",
         },
+        {
+          label: "assembly",
+          url: "/assembly",
+        },
       ],
     };
   },
