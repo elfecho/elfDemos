@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试ws</title>
+</head>
+
+<body>
+  <script>
+    let ws = new WebSocket('ws://localhost:3000');
+
+    // 响应收到的消息:
+    ws.onmessage = function (msg) { console.log(msg); };
+
+    // 给服务器发送一个字符串:
+    const msg = 'hello'
+    try {
+      ws.send(msg);
+    } catch (err) {
+      var tryTime = 0;
+      // 重试10次，每次之间间隔3秒
+      // if (tryTime < 1) {
+      //   var t1 = setTimeout(function () {
+      //     tryTime++;
+      //     ws.send(msg);
+      //   }, 3 * 1000);
+      // } else {
+      //   console.error("重连失败.");
+      // }
+    }
+
+  </script>
+</body>
+
+</html>
