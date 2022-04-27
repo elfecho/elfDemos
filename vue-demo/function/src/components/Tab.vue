@@ -57,6 +57,10 @@ export default {
           label: "assembly",
           url: "/assembly",
         },
+        {
+          label: "拖拽",
+          url: "/draggable",
+        },
       ],
     };
   },
@@ -69,10 +73,8 @@ export default {
         this.selectPath = newRoute.path;
       },
       immediate: true,
-      deep: true
-    }
-    
-    
+      deep: true,
+    },
   },
 };
 </script>

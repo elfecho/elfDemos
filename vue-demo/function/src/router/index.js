@@ -72,6 +72,11 @@ export default new Router({
           name: 'assembly',
           component: () => import('./../pages/assembly')
         },
+        {
+          path: '/draggable',
+          name: 'draggable',
+          component: () => import('./../pages/draggable')
+        },
       ]
     },
     {
