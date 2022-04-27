@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+  <title>My first three.js app</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%
+    }
+  </style>
+</head>
+
+<body>
+  <div id="example"></div>
+  <script src="../build/three.js"></script>
+
+  <script type="module">
+    // Our Javascript will go here.
+    import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh } from '../build/three.js'
+    var scene = new Scene() // 创建场景
+    var camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // 后置摄像机
+
+    var renderer = new WebGLRenderer(); // 渲染器
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('example').appendChild(renderer.domElement);
+
+    var geometry = new BoxGeometry(1, 1, 1); // 正方形几何体
+    var material = new MeshBasicMaterial({ color: 0xff2288 }); // 网格基础材质
+    var cube = new Mesh(geometry, material); // 网格
+    scene.add(cube);
+    camera.position.z = 5;
+
+    // 为正方体添加旋转角度
+    // cube.rotation.x += 0.50;
+    // cube.rotation.y += 0.50;
+
+    var animate = function () {
+      requestAnimationFrame(animate); // 刷新率一般是60次/秒
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+
+
+    renderer.render(scene, camera)
+  </script>
+</body>
+
+</html>
