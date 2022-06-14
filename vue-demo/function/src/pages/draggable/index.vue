@@ -2,17 +2,32 @@
   <div class="row">
     <div class="col-3">
       <h3>Draggable 1</h3>
-      <draggable :list="list1" group="people" @change="log">
-        <transition-group class="list-group">
-          <div
-            class="list-group-item"
-            v-for="(element, index) in list1"
-            :key="element.name"
-          >
-            {{ element.name }} {{ index }}
-          </div>
-        </transition-group>
-      </draggable>
+      <div class="list-container">
+        <draggable
+          :list="list1"
+          group="people"
+          ghostClass="ghost"
+          @change="log"
+        >
+          <transition-group class="list-group">
+            <div
+              class="list-group-item"
+              v-for="(element, index) in list1"
+              :key="element.name"
+            >
+              {{ element.name }} {{ index }}
+            </div>
+          </transition-group>
+        </draggable>
+        <div class="back-list">
+          <div class="back-item">1</div>
+          <div class="back-item">2</div>
+          <div class="back-item">3</div>
+          <div class="back-item">4</div>
+          <div class="back-item">5</div>
+          <div class="back-item">6</div>
+        </div>
+      </div>
     </div>
 
     <div class="col-3">
@@ -24,7 +39,7 @@
             v-for="(element, index) in list2"
             :key="element.name"
           >
-            {{ element.name }} {{ index }}
+            {{ element.name }} {{ index }} 239084902348039
           </div>
         </transition-group>
       </draggable>
@@ -40,8 +55,8 @@ import draggable from "vuedraggable";
 
 export default {
   name: "two-lists",
-  display: "Two Lists",
-  order: 1,
+  // display: "Two Lists",
+  // order: 1,
   components: {
     draggable,
   },
@@ -86,8 +101,31 @@ export default {
 .col-3 {
   margin-right: 100px;
 }
+.ghost {
+  display: none;
+}
 .list-group-item {
   cursor: move;
+}
+.list-container {
+  position: relative;
+}
+.back-list {
+  display: flex;
+  width: 700px;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .back-item {
+    width: calc(30% - 20px);
+    height: 200px;
+    border: 1px solid #808080;
+    margin-left: 20px;
+    margin-top: 20px;
+    background: #fff;
+  }
 }
 .list-group {
   display: flex;
@@ -95,6 +133,8 @@ export default {
   flex-wrap: wrap;
   margin-left: -20px;
   margin-top: -20px;
+  position: relative;
+  z-index: 999;
   .list-group-item {
     width: calc(30% - 20px);
     height: 200px;
