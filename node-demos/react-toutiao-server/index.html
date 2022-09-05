@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  测试页面
+  <script>
+    // navigator.sendBeacon('http://localhost:9000', { a: 1 })
+    const sendBeacon = (url, data = {}) => {
+      const joinedQueue = navigator.sendBeacon(url, JSON.stringify(data));
+      console.log('用户代理把数据加入传输队列' + (joinedQueue ? '成功' : '失败'));
+    }
+    document.addEventListener('visibilitychange', () => {
+      sendBeacon('http://localhost:9000/end', { a: 1 })
+    })
+
+  </script>
+</body>
+
+</html>

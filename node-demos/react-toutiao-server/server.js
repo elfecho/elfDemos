@@ -1,21 +1,9 @@
 var http = require('http')
-var https = require('https')
-var fs = require('fs')
+var utils = require('./utils')
+var apis = require('./apis')
 var TEMPLATE_ROOT_DIR = 'D:/github/day21/react-toutiao/dist/html/'
 var STATIC_DIR = 'D:/github/day21/react-toutiao/dist/static/'
 
-function readContent(ROOT_DIR, path) {
-  // const content = fs.readFileSync(TEMPLATE_ROOT_DIR + path)
-  // console.log(content)  // 尽量不用同步
-  return new Promise(function (resolve, reject) {
-    fs.readFile(ROOT_DIR + path, 'utf-8', function (err, content) {
-      if (err) {
-        reject(err)
-      }
-      resolve(content)
-    })
-  })
-}
 
 const actionMap = [
   {
@@ -23,7 +11,7 @@ const actionMap = [
     handler: function (req, res) {
       console.log('访问了home')
       // 获取并渲染了html字符串
-      readContent(TEMPLATE_ROOT_DIR, '/index.html').then(content => {
+      utils.readContent(TEMPLATE_ROOT_DIR, '/index.html').then(content => {
         res.write(content)
         res.end()
       })
@@ -38,7 +26,7 @@ const actionMap = [
       console.log('req.url::', req.url)
       var filepath = req.url.replace(/^\/static/, '').replace(/\?.*$/, '')
       console.log('filepath::', filepath)
-      readContent(STATIC_DIR, filepath)
+      utils.readContent(STATIC_DIR, filepath)
         .then(content => {
           res.write(content)
           res.end()
@@ -50,33 +38,22 @@ const actionMap = [
   {
     uri: /^\/list\/?$/,
     handler: function (req, res) {
-      https
-        .get('https://m.toutiao.com/list/?tag=__all__&max_time=0&min_behot_time=0&ac=wap&count=20&format=json_raw&_signature=IEYCcAAAQrlcYWc2jAGMqyBGAm&i=&as=A136925F53D7622&cp=62F38716B2F2CE1&aid=1698',
-          function (list) {
-            let body = ''
-            list.on('data', chunk => {
-              // console.log(chunk.toString())
-              body += chunk
-            }).on('end', () => {
-              var bodyObj = JSON.parse(body)
-              res.write(JSON.stringify({
-                data: [
-                  {
-                    "type": "singlePic",
-                    "data": {
-                      "articleUrl": bodyObj.data[0].article_url,
-                      "title": bodyObj.data[0].title,
-                      "id": "i6727634212259643916",
-                      "imageList": bodyObj.data[0].image_list
-                    }
-                  }
-                ]
-              }))
-              res.end()
+      apis.getList().then(content => {
+        const listStr = apis.convert(content)
+        res.write(listStr)
+        res.end()
+      })
 
-            })
-          })
-
+    }
+  },
+  {
+    uri: /^\/end\/?$/,
+    handler: function (req, res) {
+      console.log('req', req.url)
+      res.write(JSON.stringify({
+        "data": req.url
+      }))
+      res.end()
     }
   }
 
