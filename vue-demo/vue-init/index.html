@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>template</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    const Foo = {
+      template: `<div>Foo</div>`,
+      beforeCreate() {
+        console.log('before - create')
+      },
+      created() {
+        console.log('created')
+      },
+      beforeMount() {
+        console.log('beforeMount')
+      },
+      mounted() {
+        console.log('mounted')
+      },
+      beforeUpdate() {
+        console.log('beforeUpdate')
+      },
+      updated() {
+        console.log('updated')
+      },
+      beforeDestroy() {
+        console.log('beforeDestroy')
+      },
+      destroyed() {
+        console.log('destroyed')
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isFoo: true
+      },
+      components: {
+        Foo
+      },
+      template: `
+        <div>
+          app
+          <Foo v-if="isFoo"></Foo>
+        </div>
+      `
+    })
+  </script>
+</body>
+
+</html>
