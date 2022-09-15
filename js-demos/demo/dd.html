@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //     var fullname = & apos; Arthur & apos;;
+    //     var obj = {
+    //       fullname: & apos; Brent& apos;,
+    //     prop: {
+    //       fullname: & apos; Colin & apos;,
+    //       getFullname: function() {
+    //         return this.fullname;
+    //       }
+    //     }
+    // }
+    //     console.log(obj.prop.getFullname());
+    //     var test = obj.prop.getFullname;
+    //     console.log(test())
+    var fullname = 'Arthur';
+    var obj = {
+      fullname: 'Brent',
+      prop: {
+        fullname: 'Colin',
+        getFullname: function () {
+          return this.fullname;
+        }
+      }
+    }
+    console.log(obj.prop.getFullname());
+    var test = obj.prop.getFullname;
+    console.log(test())
+  </script>
+</body>
+
+</html>
