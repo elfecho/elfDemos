@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @keyframes check {
+
+      0% {
+
+        height: 0;
+
+        width: 0;
+      }
+
+      30% {
+
+        width: 40px;
+      }
+
+      80% {
+        width: 40px;
+
+        height: 80px;
+      }
+    }
+
+    .checkmark {
+
+      display: block;
+
+      height: 200px;
+
+      position: relative;
+
+      width: 200px;
+    }
+
+    .checkmark:after {
+
+      animation: check 2s;
+    }
+
+    .checkmark:after {
+
+      -moz-transform: scaleX(-1) rotate(135deg);
+
+      -ms-transform: scaleX(-1) rotate(135deg);
+
+      -webkit-transform: scaleX(-1) rotate(135deg);
+
+      transform: scaleX(-1) rotate(135deg);
+
+      -moz-transform-origin: left top;
+
+      -ms-transform-origin: left top;
+
+      -webkit-transform-origin: left top;
+
+      transform-origin: left top;
+
+      border-right: 30px solid #90abd6;
+
+      border-top: 30px solid #90abd6;
+
+      content: '';
+
+      display: block;
+
+      height: 0;
+
+      left: 14px;
+
+      position: absolute;
+
+      top: 100px;
+
+      width: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="checkmark"></div>
+</body>
+
+</html>

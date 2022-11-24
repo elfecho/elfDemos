@@ -13,10 +13,10 @@ const app = new Koa();
 app.use(catchError)
 app.use(parser())
 // console.log(__dirname)
-app.use(static(path.join(__dirname,'./static')))
+app.use(static(path.join(__dirname, './static')))
 
 InitManager.initCore(app)
 
-app.listen(3000, () => {
-  console.log('端口已开启， localhost:3000')
+app.listen(9000, () => {
+  console.log('端口已开启， localhost:9000')
 });
